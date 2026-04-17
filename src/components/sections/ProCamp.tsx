@@ -9,7 +9,7 @@ const guests = [
   "Ante Delija",
   "Ivan Erslan",
   "Jure Jurić",
-  "Francisco „Croata" Barrio",
+  'Francisco „Croata" Barrio',
 ];
 const orgs = ["UFC", "ONE Championship", "KSW", "FNC"];
 

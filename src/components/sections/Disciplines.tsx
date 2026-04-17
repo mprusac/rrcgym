@@ -11,7 +11,7 @@ const items = [
   {
     icon: Shield,
     title: "Brazilian Jiu-Jitsu",
-    desc: "Parterna tehnika i submisije pod vodstvom Fabiana „Jacarezinho" Silve, BJJ crnog pojasa.",
+    desc: 'Parterna tehnika i submisije pod vodstvom Fabiana „Jacarezinho" Silve, BJJ crnog pojasa.',
   },
   {
     icon: Zap,
