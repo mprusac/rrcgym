@@ -2,12 +2,14 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import heroImage from "@/assets/hero-team.png";
 import logo from "@/assets/rrc-logo.png";
+import VideoModal from "@/components/VideoModal";
 
 const Hero = () => {
   const ref = useRef<HTMLElement>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
@@ -74,14 +76,21 @@ const Hero = () => {
               <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </Button>
-          <Button asChild variant="outlineFight" size="lg">
-            <a href="#dvorana">
-              <Play className="mr-1 h-4 w-4" />
-              Pogledaj dvoranu
-            </a>
+          <Button variant="outlineFight" size="lg" onClick={() => setVideoOpen(true)}>
+            <Play className="mr-1 h-4 w-4" />
+            Pogledaj dvoranu
           </Button>
         </motion.div>
       </motion.div>
+
+      <VideoModal
+        open={videoOpen}
+        onClose={() => setVideoOpen(false)}
+        src="/videos/dvorana.mp4"
+        poster="/videos/dvorana-poster.jpg"
+        title="Iza vrata RRC Gyma"
+        subtitle="Vitez · Dvorana"
+      />
 
       {/* Scroll indicator */}
       <motion.a
