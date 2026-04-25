@@ -61,13 +61,13 @@ const Schedule = () => (
         <div className="flex items-start gap-3">
           <Calendar className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
           <p className="text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">Raspored se ažurira.</span>{" "}
-            Za točne termine i prijave koristite Sportin aplikaciju.
+            <span className="font-semibold text-foreground">Za ulazak u dvoranu prijavite se na Sportin aplikaciju.</span>{" "}
+            Točni termini, rezervacije i prijave dostupni su isključivo putem aplikacije.
           </p>
         </div>
         <Button asChild variant="fight" size="default">
           <a href="https://sportin.rs/en/venue/rrc-gym" target="_blank" rel="noopener noreferrer">
-            Rezerviraj termin
+            Otvori Sportin
             <ExternalLink className="ml-1 h-4 w-4" />
           </a>
         </Button>
