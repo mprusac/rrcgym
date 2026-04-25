@@ -88,10 +88,10 @@ const ProCamp = () => (
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative hidden lg:block"
+        className="relative"
       >
-        <div className="absolute -left-4 -top-4 z-10 h-24 w-24 border-l-4 border-t-4 border-primary" aria-hidden />
-        <div className="grid gap-4">
+        <div className="absolute -left-4 -top-4 z-10 hidden h-24 w-24 border-l-4 border-t-4 border-primary lg:block" aria-hidden />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
           {featuredGuests.map((g, i) => (
             <motion.div
               key={g.name}
