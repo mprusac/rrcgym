@@ -12,24 +12,28 @@ const items = [
     title: "MMA",
     desc: "Mješovite borilačke vještine - udaračka tehnika, hrvanje i parter, integrirano u jedan sustav. Za sve razine.",
     image: mmaImage,
+    objectPosition: "center 20%",
   },
   {
     icon: Shield,
     title: "Brazilian Jiu-Jitsu",
     desc: 'Parterna tehnika i submisije pod vodstvom Fabiana „Jacarezinho" Silve, BJJ crnog pojasa.',
     image: bjjImage,
+    objectPosition: "center 30%",
   },
   {
     icon: Zap,
     title: "Kickboxing",
     desc: "Eksplozivni udarački sport koji razvija snagu, brzinu i kondiciju kroz strukturiran trening.",
     image: kickboxImage,
+    objectPosition: "center 15%",
   },
   {
     icon: Hand,
     title: "Boks",
     desc: "Klasična škola udaranja - tehnika ruku, rad nogu, ritam i taktika u ringu.",
     image: boksImage,
+    objectPosition: "center 25%",
   },
 ];
 
