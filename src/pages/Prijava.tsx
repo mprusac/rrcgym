@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { z } from "zod";
-import { ArrowLeft, CheckCircle2, Loader2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowLeft, CheckCircle2, Loader2, Dumbbell, Zap, Hand, Swords } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,14 +11,28 @@ import { toast } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 
-const DAYS = ["", "Pon", "Uto", "Sri", "Čet", "Pet", "Sub", "Ned"];
-const DISCIPLINE_LABEL: Record<string, string> = {
-  mma: "MMA",
-  kickbox: "Kickbox",
-  boks: "Boks",
-  jiu_jitsu: "Jiu-Jitsu",
-};
-const DISCIPLINE_FILTERS = ["all", "mma", "kickbox", "boks", "jiu_jitsu"] as const;
+const DAYS = [
+  { idx: 1, short: "Pon", long: "Ponedjeljak" },
+  { idx: 2, short: "Uto", long: "Utorak" },
+  { idx: 3, short: "Sri", long: "Srijeda" },
+  { idx: 4, short: "Čet", long: "Četvrtak" },
+  { idx: 5, short: "Pet", long: "Petak" },
+  { idx: 6, short: "Sub", long: "Subota" },
+  { idx: 7, short: "Ned", long: "Nedjelja" },
+];
+
+const DISCIPLINES = [
+  { v: "mma", l: "MMA", desc: "Kompletan borac", icon: Swords },
+  { v: "kickbox", l: "Kickbox", desc: "Eksplozivni udarci", icon: Zap },
+  { v: "boks", l: "Boks", desc: "Slatka znanost", icon: Dumbbell },
+  { v: "jiu_jitsu", l: "Jiu-Jitsu", desc: "Igra na partu", icon: Hand },
+] as const;
+
+type DisciplineV = (typeof DISCIPLINES)[number]["v"];
+
+const DISCIPLINE_LABEL: Record<string, string> = Object.fromEntries(
+  DISCIPLINES.map((d) => [d.v, d.l]),
+);
 
 interface Session {
   id: string;
@@ -48,7 +62,9 @@ const Prijava = () => {
   const [sessions, setSessions] = useState<Session[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  const [filter, setFilter] = useState<(typeof DISCIPLINE_FILTERS)[number]>("all");
+  const [discipline, setDiscipline] = useState<DisciplineV>(
+    (params.get("d") as DisciplineV) || "mma",
+  );
   const [selectedId, setSelectedId] = useState<string | null>(params.get("session"));
   const [done, setDone] = useState(false);
 
@@ -78,15 +94,32 @@ const Prijava = () => {
     })();
   }, []);
 
-  const filtered = useMemo(
-    () => (filter === "all" ? sessions : sessions.filter((s) => s.discipline === filter)),
-    [sessions, filter],
-  );
+  // Group sessions of selected discipline by day
+  const byDay = useMemo(() => {
+    const map: Record<number, Session[]> = {};
+    for (const d of DAYS) map[d.idx] = [];
+    for (const s of sessions) {
+      if (s.discipline === discipline) map[s.day_of_week]?.push(s);
+    }
+    return map;
+  }, [sessions, discipline]);
+
   const selected = sessions.find((s) => s.id === selectedId) ?? null;
+
+  const pickDiscipline = (d: DisciplineV) => {
+    setDiscipline(d);
+    setSelectedId(null);
+    const np = new URLSearchParams(params);
+    np.set("d", d);
+    np.delete("session");
+    setParams(np, { replace: true });
+  };
 
   const handleSelect = (id: string) => {
     setSelectedId(id);
-    setParams({ session: id }, { replace: true });
+    const np = new URLSearchParams(params);
+    np.set("session", id);
+    setParams(np, { replace: true });
     setTimeout(() => {
       document.getElementById("forma")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
@@ -119,7 +152,6 @@ const Prijava = () => {
       return;
     }
 
-    // Best-effort potvrda mailom (ne blokira UX ako edge fn nije postavljena)
     try {
       await supabase.functions.invoke("send-transactional-email", {
         body: {
@@ -129,7 +161,7 @@ const Prijava = () => {
           templateData: {
             name: parsed.data.full_name,
             discipline: DISCIPLINE_LABEL[selected.discipline] ?? selected.discipline,
-            day: DAYS[selected.day_of_week],
+            day: DAYS.find((d) => d.idx === selected.day_of_week)?.long ?? "",
             startTime: selected.start_time.slice(0, 5),
             endTime: selected.end_time.slice(0, 5),
             coach: selected.coach,
@@ -137,7 +169,7 @@ const Prijava = () => {
         },
       });
     } catch {
-      /* edge fn još nije deployana — preskoči tiho */
+      /* edge fn još nije postavljena — preskoči tiho */
     }
 
     setDone(true);
@@ -165,11 +197,11 @@ const Prijava = () => {
             Prijava na trening
           </div>
           <h1 className="font-display text-4xl leading-tight md:text-6xl">
-            Odaberi termin i <span className="text-primary">krenimo</span>
+            Odaberi sport pa <span className="text-primary">termin</span>
           </h1>
           <p className="mt-3 max-w-xl text-base text-muted-foreground md:text-lg">
-            Odaberi disciplinu i termin koji ti odgovara, ispuni svoje podatke i poslat ćemo ti
-            potvrdu na email.
+            Klikni disciplinu, pa odaberi termin iz tjednog rasporeda. Ispod ispuni svoje podatke
+            i šaljemo potvrdu na email.
           </p>
         </motion.header>
 
@@ -203,30 +235,57 @@ const Prijava = () => {
             </div>
           </motion.div>
         ) : (
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr]">
-            {/* Schedule */}
-            <section aria-labelledby="raspored-title">
-              <div className="mb-4 flex items-center justify-between gap-3">
-                <h2 id="raspored-title" className="font-display text-2xl md:text-3xl">
-                  Raspored
+          <>
+            {/* Step 1 — Discipline picker */}
+            <section aria-labelledby="step-1">
+              <div className="mb-4 flex items-baseline gap-3">
+                <span className="font-display text-sm text-primary">01</span>
+                <h2 id="step-1" className="font-display text-2xl md:text-3xl">
+                  Odaberi sport
                 </h2>
               </div>
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                {DISCIPLINES.map((d) => {
+                  const active = d.v === discipline;
+                  const Icon = d.icon;
+                  return (
+                    <button
+                      key={d.v}
+                      onClick={() => pickDiscipline(d.v)}
+                      className={cn(
+                        "group relative flex flex-col items-center justify-center gap-2 rounded-2xl border p-5 text-center transition-all md:p-6",
+                        active
+                          ? "border-primary bg-primary/10 shadow-red"
+                          : "border-border bg-card/40 hover:border-primary/60 hover:bg-card",
+                      )}
+                    >
+                      <Icon
+                        className={cn(
+                          "h-7 w-7 transition-colors md:h-8 md:w-8",
+                          active ? "text-primary" : "text-muted-foreground group-hover:text-foreground",
+                        )}
+                      />
+                      <div className="font-display text-lg md:text-xl">{d.l}</div>
+                      <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                        {d.desc}
+                      </div>
+                      {active && (
+                        <span className="absolute right-2 top-2 inline-block h-2 w-2 rounded-full bg-primary" />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
 
-              <div className="mb-5 flex flex-wrap gap-2">
-                {DISCIPLINE_FILTERS.map((d) => (
-                  <button
-                    key={d}
-                    onClick={() => setFilter(d)}
-                    className={cn(
-                      "rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all",
-                      filter === d
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border bg-background/40 text-muted-foreground hover:border-primary/60 hover:text-foreground",
-                    )}
-                  >
-                    {d === "all" ? "Sve" : DISCIPLINE_LABEL[d]}
-                  </button>
-                ))}
+            {/* Step 2 — Schedule grid */}
+            <section aria-labelledby="step-2" className="mt-12">
+              <div className="mb-4 flex items-baseline gap-3">
+                <span className="font-display text-sm text-primary">02</span>
+                <h2 id="step-2" className="font-display text-2xl md:text-3xl">
+                  Tjedni raspored —{" "}
+                  <span className="text-primary">{DISCIPLINE_LABEL[discipline]}</span>
+                </h2>
               </div>
 
               {loading ? (
@@ -234,88 +293,102 @@ const Prijava = () => {
                   <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Učitavanje rasporeda…
                 </div>
               ) : (
-                <div className="overflow-hidden rounded-xl border border-border">
-                  <table className="w-full text-left text-sm">
-                    <thead className="bg-card text-xs uppercase tracking-wider text-muted-foreground">
-                      <tr>
-                        <th className="px-4 py-3">Dan</th>
-                        <th className="px-4 py-3">Vrijeme</th>
-                        <th className="px-4 py-3">Disciplina</th>
-                        <th className="px-4 py-3 hidden sm:table-cell">Trener</th>
-                        <th className="px-4 py-3"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filtered.map((s) => {
-                        const active = s.id === selectedId;
-                        return (
-                          <tr
-                            key={s.id}
-                            className={cn(
-                              "border-t border-border transition-colors",
-                              active ? "bg-primary/10" : "hover:bg-card/60",
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={discipline}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.25 }}
+                    className="overflow-hidden rounded-xl border border-border"
+                  >
+                    {/* Mobile: stacked per day */}
+                    <div className="divide-y divide-border md:hidden">
+                      {DAYS.map((d) => (
+                        <div key={d.idx} className="bg-card/40 p-4">
+                          <div className="mb-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                            {d.long}
+                          </div>
+                          {byDay[d.idx].length === 0 ? (
+                            <div className="text-sm text-muted-foreground/60">Nema termina</div>
+                          ) : (
+                            <div className="flex flex-wrap gap-2">
+                              {byDay[d.idx].map((s) => (
+                                <SlotButton
+                                  key={s.id}
+                                  s={s}
+                                  active={s.id === selectedId}
+                                  onClick={() => handleSelect(s.id)}
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Desktop: 7-column grid */}
+                    <div className="hidden grid-cols-7 md:grid">
+                      {DAYS.map((d) => (
+                        <div
+                          key={d.idx}
+                          className="border-r border-border bg-card/30 p-3 last:border-r-0"
+                        >
+                          <div className="mb-3 text-center text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                            {d.short}
+                          </div>
+                          <div className="flex flex-col gap-2">
+                            {byDay[d.idx].length === 0 ? (
+                              <div className="rounded-lg border border-dashed border-border/60 px-2 py-3 text-center text-[11px] text-muted-foreground/50">
+                                —
+                              </div>
+                            ) : (
+                              byDay[d.idx].map((s) => (
+                                <SlotButton
+                                  key={s.id}
+                                  s={s}
+                                  active={s.id === selectedId}
+                                  onClick={() => handleSelect(s.id)}
+                                />
+                              ))
                             )}
-                          >
-                            <td className="px-4 py-3 font-semibold">{DAYS[s.day_of_week]}</td>
-                            <td className="px-4 py-3 text-muted-foreground">
-                              {s.start_time.slice(0, 5)}–{s.end_time.slice(0, 5)}
-                            </td>
-                            <td className="px-4 py-3">
-                              <span className="inline-flex items-center rounded-full bg-primary/15 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-primary">
-                                {DISCIPLINE_LABEL[s.discipline] ?? s.discipline}
-                              </span>
-                              <div className="mt-1 text-xs text-muted-foreground">{s.level}</div>
-                            </td>
-                            <td className="px-4 py-3 text-muted-foreground hidden sm:table-cell">
-                              {s.coach}
-                            </td>
-                            <td className="px-4 py-3 text-right">
-                              <Button
-                                size="sm"
-                                variant={active ? "fight" : "outlineFight"}
-                                onClick={() => handleSelect(s.id)}
-                              >
-                                {active ? "Odabrano" : "Odaberi"}
-                              </Button>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                      {filtered.length === 0 && (
-                        <tr>
-                          <td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">
-                            Nema termina za ovaj filter.
-                          </td>
-                        </tr>
-                      )}
-                    </tbody>
-                  </table>
-                </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
               )}
             </section>
 
-            {/* Form */}
-            <section id="forma" aria-labelledby="forma-title">
-              <div className="sticky top-24 rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-md md:p-8">
-                <h2 id="forma-title" className="font-display text-2xl md:text-3xl">
+            {/* Step 3 — Form */}
+            <section id="forma" aria-labelledby="step-3" className="mt-12">
+              <div className="mb-4 flex items-baseline gap-3">
+                <span className="font-display text-sm text-primary">03</span>
+                <h2 id="step-3" className="font-display text-2xl md:text-3xl">
                   Tvoji podaci
                 </h2>
+              </div>
+
+              <div className="rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-md md:p-8">
                 {selected ? (
-                  <div className="mt-3 rounded-lg border border-primary/30 bg-primary/10 p-3 text-sm">
+                  <div className="mb-6 rounded-lg border border-primary/30 bg-primary/10 p-3 text-sm">
                     Odabrano:{" "}
                     <span className="font-semibold text-primary">
                       {DISCIPLINE_LABEL[selected.discipline]}
                     </span>{" "}
-                    · {DAYS[selected.day_of_week]} {selected.start_time.slice(0, 5)}–
-                    {selected.end_time.slice(0, 5)} · {selected.coach}
+                    ·{" "}
+                    {DAYS.find((d) => d.idx === selected.day_of_week)?.long}{" "}
+                    {selected.start_time.slice(0, 5)}–{selected.end_time.slice(0, 5)} ·{" "}
+                    <span className="text-muted-foreground">trener {selected.coach}</span>
                   </div>
                 ) : (
-                  <p className="mt-3 text-sm text-muted-foreground">
-                    Odaberi termin iz rasporeda da nastaviš.
+                  <p className="mb-6 text-sm text-muted-foreground">
+                    Odaberi termin iz rasporeda iznad da nastaviš.
                   </p>
                 )}
 
-                <form onSubmit={onSubmit} className="mt-6 grid gap-4">
+                <form onSubmit={onSubmit} className="grid gap-4">
                   <div className="grid gap-2">
                     <Label htmlFor="full_name">Ime i prezime</Label>
                     <Input
@@ -386,7 +459,7 @@ const Prijava = () => {
                     variant="fight"
                     size="lg"
                     disabled={submitting || !selected}
-                    className="mt-2"
+                    className="mt-2 w-full sm:w-auto"
                   >
                     {submitting ? (
                       <>
@@ -402,11 +475,44 @@ const Prijava = () => {
                 </form>
               </div>
             </section>
-          </div>
+          </>
         )}
       </div>
     </main>
   );
 };
+
+const SlotButton = ({
+  s,
+  active,
+  onClick,
+}: {
+  s: Session;
+  active: boolean;
+  onClick: () => void;
+}) => (
+  <button
+    onClick={onClick}
+    className={cn(
+      "w-full rounded-lg border px-2.5 py-2 text-left transition-all",
+      active
+        ? "border-primary bg-primary text-primary-foreground shadow-red"
+        : "border-border bg-background hover:border-primary/60 hover:bg-card",
+    )}
+  >
+    <div className="font-display text-sm leading-tight tabular md:text-base">
+      {s.start_time.slice(0, 5)}–{s.end_time.slice(0, 5)}
+    </div>
+    <div
+      className={cn(
+        "mt-0.5 truncate text-[10px] leading-tight md:text-[11px]",
+        active ? "text-primary-foreground/85" : "text-muted-foreground",
+      )}
+      title={`${s.coach} · ${s.level}`}
+    >
+      {s.coach}
+    </div>
+  </button>
+);
 
 export default Prijava;
