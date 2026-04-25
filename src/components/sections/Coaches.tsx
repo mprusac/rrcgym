@@ -37,7 +37,7 @@ const Coaches = () => (
           className="lg:col-span-7"
         >
           <h2 className="font-display text-5xl leading-[0.9] text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
-            Tim koji
+            <span className="text-primary">Tim koji</span>
             <br />
             drži dvoranu
           </h2>
