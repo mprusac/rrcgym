@@ -37,10 +37,18 @@ const Navbar = () => {
       <div className="container-x flex h-16 items-center justify-between md:h-20">
         <Link
           to="/"
-          className="font-display text-2xl tracking-wide text-foreground md:text-3xl"
+          className="flex items-center font-display text-2xl tracking-wide text-foreground md:text-3xl"
           aria-label="RRC Gym početna"
         >
-          RRC<span className="text-primary"> GYM</span>
+          {scrolled ? (
+            <img
+              src={logo}
+              alt="RRC Gym"
+              className="h-10 w-auto md:h-12"
+            />
+          ) : (
+            <span>RRC<span className="text-primary"> GYM</span></span>
+          )}
         </Link>
 
         <nav
