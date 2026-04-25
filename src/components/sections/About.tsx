@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import teamGroup from "@/assets/team-group.png";
 
 const About = () => (
   <section id="o-nama" className="relative bg-background py-24 md:py-32">
@@ -16,12 +15,12 @@ const About = () => (
       >
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <img
-            src={teamGroup}
-            alt="RRC Gym tim u dvorani"
-            className="h-full w-full object-cover"
+            src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=900&q=80"
+            alt="Unutrašnjost MMA dvorane"
+            className="h-full w-full object-cover grayscale transition-all duration-700 hover:grayscale-0"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-background/70 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-transparent" />
         </div>
         <div className="absolute -bottom-6 -right-6 hidden h-32 w-32 border-l-4 border-t-4 border-primary md:block" aria-hidden />
       </motion.div>
@@ -32,7 +31,7 @@ const About = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        <SectionHeading eyebrow="O nama" title="Dvorana gdje znojem na treningu, štedimo krv u borbi" />
+        <SectionHeading eyebrow="O nama" title="Mjesto gdje sport živi, a strast raste" />
         <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
           <p>
             RRC Gym je otvoren u lipnju 2025. kao prvi borilački centar u Bosni i Hercegovini
