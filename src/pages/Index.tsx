@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
-import Stats from "@/components/sections/Stats";
+import Soldic from "@/components/sections/Soldic";
 import About from "@/components/sections/About";
 import Disciplines from "@/components/sections/Disciplines";
 import Coaches from "@/components/sections/Coaches";
@@ -46,7 +46,7 @@ const Index = () => {
       <Navbar />
       <h1 className="sr-only">RRC Gym Vitez — Borilački centar Roberta Soldića</h1>
       <Hero />
-      <Stats />
+      <Soldic />
       <About />
       <Disciplines />
       <Coaches />

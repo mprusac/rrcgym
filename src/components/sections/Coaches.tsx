@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Trophy, Users } from "lucide-react";
+import { Users } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 
 const Coaches = () => (
@@ -11,59 +11,6 @@ const Coaches = () => (
         subtitle="Vrhunsko znanje koje stiže direktno iz najjačih borilačkih organizacija svijeta."
         center
       />
-
-      {/* Soldić */}
-      <motion.article
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6 }}
-        className="mt-16 grid items-stretch overflow-hidden border border-border bg-surface lg:grid-cols-5"
-      >
-        <div className="relative lg:col-span-2">
-          <img
-            src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=900&q=80"
-            alt="Roberto Soldić — portret"
-            className="h-full min-h-[420px] w-full object-cover grayscale"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent lg:bg-gradient-to-r" />
-          <div className="absolute left-6 top-6 flex items-center gap-2 border border-primary bg-background/80 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-primary backdrop-blur">
-            🛡️ Glavni trener
-          </div>
-        </div>
-
-        <div className="flex flex-col justify-center gap-6 p-8 md:p-12 lg:col-span-3">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-primary">Robocop</div>
-            <h3 className="mt-1 font-display text-5xl leading-none text-foreground md:text-6xl">
-              Roberto Soldić
-            </h3>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {["ONE Championship", "2× KSW prvak", "FFC prvak", "Superior FC prvak"].map((t) => (
-              <span key={t} className="border border-border bg-surface-elevated px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                {t}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-4 border-y border-border py-4">
-            <Trophy className="h-7 w-7 text-primary" />
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Profesionalni rekord</div>
-              <div className="font-display tabular text-3xl text-foreground">21 — 4 — 1 NC</div>
-            </div>
-          </div>
-
-          <p className="text-muted-foreground md:text-lg">
-            Aktivni borac ONE Championshipa, dvostruki prvak KSW-a u welter i middle kategoriji.
-            Jedan od najpoznatijih bosanskohercegovačkih i hrvatskih boraca svoje generacije.
-            U RRC Gymu osobno vodi treninge i radi s polaznicima svih razina.
-          </p>
-        </div>
-      </motion.article>
 
       {/* Silva */}
       <motion.article
