@@ -1,59 +1,93 @@
 import { motion } from "framer-motion";
-import { Users } from "lucide-react";
-import SectionHeading from "@/components/SectionHeading";
+import coach1 from "@/assets/coach-1.png";
+import coach2 from "@/assets/coach-2.png";
+import coach3 from "@/assets/coach-3.png";
+
+const coaches = [
+  {
+    img: coach1,
+    role: "Glavni\nTrener",
+    tags: ["Boks", "Kickboxing", "K-1"],
+    desc: "Vodi udaračke programe kluba. Profesionalna i rekreativna grupa.",
+  },
+  {
+    img: coach2,
+    role: "Fabiano\nSilva",
+    tags: ["BJJ", "Crni pojas", "Jacarezinho"],
+    desc: "Brazilski crni pojas, gostujući trener. BJJ i no-gi program.",
+  },
+  {
+    img: coach3,
+    role: "Trener\nMMA",
+    tags: ["MMA", "Grappling"],
+    desc: "Vodi osnovnu MMA grupu i kampove za goste.",
+  },
+];
 
 const Coaches = () => (
   <section id="treneri" className="relative bg-background py-24 md:py-32">
     <div className="container-x">
-      <SectionHeading
-        eyebrow="Treneri"
-        title="Vođeni iskusnim borcima"
-        subtitle="Vrhunsko znanje koje stiže direktno iz najjačih borilačkih organizacija svijeta."
-        center
-      />
-
-      {/* Silva */}
-      <motion.article
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="mt-8 grid items-stretch overflow-hidden border border-border bg-surface lg:grid-cols-5"
-      >
-        <div className="flex flex-col justify-center gap-6 p-8 md:p-12 lg:col-span-3 lg:order-1">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-primary">Jacarezinho</div>
-            <h3 className="mt-1 font-display text-4xl leading-none text-foreground md:text-5xl">
-              Fabiano Silva
-            </h3>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {["BJJ crni pojas", "Carlson Gracie linija", "American Top Team"].map((t) => (
-              <span key={t} className="border border-border bg-surface-elevated px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                {t}
-              </span>
-            ))}
-          </div>
-          <p className="text-muted-foreground md:text-lg">
-            Brazilski crni pojas s linijom Carlson Gracie / American Top Team. Glavni gostujući
-            trener BJJ programa u RRC Gymu — donosi tehniku i pristup koji su izgradili neke od
-            najboljih grapplera svijeta.
+      {/* Header row */}
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-7"
+        >
+          <h2 className="font-display text-5xl leading-[0.9] text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+            Tim koji
+            <br />
+            dr<span className="text-gradient-red">ž</span>i dvoranu
+          </h2>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex items-end lg:col-span-5"
+        >
+          <p className="max-w-md text-muted-foreground md:text-lg">
+            Soldić je lice kluba. Dvoranu drži tim koji radi svaki dan — od jutarnjeg
+            treninga djece do večernjeg sparinga.
           </p>
-        </div>
-        <div className="relative lg:col-span-2 lg:order-2">
-          <img
-            src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=900&q=80"
-            alt="BJJ trening — portret"
-            className="h-full min-h-[360px] w-full object-cover grayscale"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent lg:bg-gradient-to-l" />
-        </div>
-      </motion.article>
+        </motion.div>
+      </div>
 
-      <div className="mt-8 flex items-center gap-4 border border-dashed border-border bg-surface/50 p-6 text-muted-foreground">
-        <Users className="h-6 w-6 text-primary" />
-        <p className="text-sm">Uskoro više informacija o ostatku našeg trenerskog tima.</p>
+      {/* Coach grid */}
+      <div className="mt-14 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-3">
+        {coaches.map((c, i) => (
+          <motion.article
+            key={i}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
+            className="group flex flex-col bg-background"
+          >
+            <div className="relative overflow-hidden">
+              <img
+                src={c.img}
+                alt={c.role.replace("\n", " ")}
+                className="aspect-[4/5] h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+            </div>
+
+            <div className="flex flex-1 flex-col gap-3 p-6 md:p-7">
+              <h3 className="whitespace-pre-line font-display text-3xl leading-[0.95] text-foreground md:text-4xl">
+                {c.role}
+              </h3>
+              <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+                {c.tags.join(" · ")}
+              </div>
+              <p className="text-sm text-muted-foreground">{c.desc}</p>
+            </div>
+          </motion.article>
+        ))}
       </div>
     </div>
   </section>
