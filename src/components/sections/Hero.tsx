@@ -2,6 +2,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRef } from "react";
+import heroImage from "@/assets/hero-team.png";
+import logo from "@/assets/rrc-logo.png";
 
 const Hero = () => {
   const ref = useRef<HTMLElement>(null);
@@ -14,8 +16,8 @@ const Hero = () => {
       {/* Background image with parallax */}
       <motion.div style={{ y }} className="absolute inset-0 -z-10">
         <img
-          src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=1920&q=80"
-          alt="MMA borac u kavezu, dramatično osvjetljenje"
+          src={heroImage}
+          alt="RRC Gym tim — Roberto Soldić s borcima i trenerima u dvorani"
           className="h-full w-full object-cover"
           loading="eager"
         />
@@ -26,45 +28,44 @@ const Hero = () => {
       {/* Content */}
       <motion.div
         style={{ opacity }}
-        className="container-x relative z-10 flex min-h-screen flex-col justify-center pb-24 pt-32"
+        className="container-x relative z-10 flex min-h-screen flex-col items-center justify-center pb-24 pt-32 text-center"
       >
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-6 inline-flex w-fit items-center gap-2 border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
+          className="mb-8 inline-flex items-center gap-2 border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary"
         >
           <span className="inline-block h-1.5 w-1.5 animate-pulse-red rounded-full bg-primary" />
           Vitez · Bosna i Hercegovina
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-display text-5xl leading-[0.95] sm:text-7xl md:text-8xl lg:text-9xl"
-        >
-          Borilački centar<br />
-          <span className="text-gradient-red">svjetske klase</span><br />
-          u srcu Bosne
-        </motion.h1>
+        {/* Logo as hero title */}
+        <motion.img
+          src={logo}
+          alt="RRC Gym"
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="w-full max-w-[520px] sm:max-w-[640px] md:max-w-[720px] drop-shadow-[0_8px_40px_rgba(0,0,0,0.6)]"
+          style={{ filter: "invert(1) brightness(1.1)" }}
+        />
+        <h1 className="sr-only">RRC Gym</h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="mt-8 max-w-2xl text-lg text-muted-foreground sm:text-xl"
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-6 text-base font-semibold uppercase tracking-[0.3em] text-foreground/90 sm:text-lg"
         >
-          MMA · BJJ · Kickboxing · Boks — pod vodstvom{" "}
-          <span className="font-semibold text-foreground">Roberta Soldića</span> i vrhunskih
-          gostujućih trenera.
+          MMA · BJJ · Kickboxing · Boks
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-10 flex flex-col gap-4 sm:flex-row"
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Button asChild variant="fight" size="xl">
             <a href="#kontakt">

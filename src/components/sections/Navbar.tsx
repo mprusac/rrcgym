@@ -33,13 +33,11 @@ const Navbar = () => {
       )}
     >
       <div className="container-x flex h-16 items-center justify-between md:h-20">
-        <a href="#pocetna" className="flex items-baseline gap-1 font-display text-2xl tracking-wide md:text-3xl" aria-label="RRC Gym početna">
-          <span className="text-primary">R</span>
-          <span className="text-foreground">RC</span>
-          <span className="ml-1 text-foreground">GYM</span>
+        <a href="#pocetna" className="font-display text-2xl tracking-wide text-foreground md:text-3xl" aria-label="RRC Gym početna">
+          RRC <span className="ml-1">GYM</span>
         </a>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Glavna navigacija">
+        <nav className="hidden items-center gap-8 lg:flex ml-auto" aria-label="Glavna navigacija">
           {links.map((l) => (
             <a
               key={l.href}
