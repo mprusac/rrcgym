@@ -3,6 +3,13 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
+import obanElliott from "@/assets/guest-oban-elliott.jpg";
+import ahmedVila from "@/assets/guest-ahmed-vila.jpg";
+
+const featuredGuests = [
+  { name: "Oban Elliott", image: obanElliott },
+  { name: "Ahmed Vila", image: ahmedVila },
+];
 
 const guests = [
   "Aleksandar Rakić",
