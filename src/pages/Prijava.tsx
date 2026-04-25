@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { z } from "zod";
-import { ArrowLeft, CheckCircle2, Loader2, Dumbbell, Zap, Hand, Swords, Clock } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Loader2, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
+import sportMma from "@/assets/sport-mma.png";
+import sportKickbox from "@/assets/sport-kickbox.png";
+import sportBoks from "@/assets/sport-boks.png";
+import sportJiuJitsu from "@/assets/sport-jiu-jitsu.png";
 
 const DAYS = [
   { idx: 1, short: "Pon", long: "Ponedjeljak" },
