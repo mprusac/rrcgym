@@ -85,16 +85,35 @@ const ProCamp = () => (
         transition={{ duration: 0.7 }}
         className="relative hidden lg:block"
       >
-        <div className="relative aspect-[3/4] overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=900&q=80"
-            alt="Profesionalni borac u kampu"
-            className="h-full w-full object-cover grayscale"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+        <div className="absolute -left-4 -top-4 z-10 h-24 w-24 border-l-4 border-t-4 border-primary" aria-hidden />
+        <div className="grid gap-4">
+          {featuredGuests.map((g, i) => (
+            <motion.div
+              key={g.name}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="group relative aspect-[4/3] overflow-hidden border border-border"
+            >
+              <img
+                src={g.image}
+                alt={`${g.name} u RRC Gym dvorani`}
+                className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary">
+                  Gostovao kod nas
+                </div>
+                <div className="mt-1 font-display text-3xl text-foreground">
+                  {g.name}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
-        <div className="absolute -left-4 -top-4 h-24 w-24 border-l-4 border-t-4 border-primary" aria-hidden />
       </motion.div>
     </div>
   </section>
