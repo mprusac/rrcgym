@@ -16,9 +16,9 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         fight:
-          "rounded-none bg-primary text-primary-foreground font-bold uppercase tracking-widest hover:bg-primary-deep hover:shadow-red transition-all border border-primary",
+          "rounded-lg bg-primary text-primary-foreground font-bold uppercase tracking-widest hover:bg-primary-deep hover:shadow-red transition-all border border-primary",
         outlineFight:
-          "rounded-none border border-foreground/30 bg-transparent text-foreground font-bold uppercase tracking-widest hover:border-primary hover:text-primary transition-all",
+          "rounded-lg border border-foreground/30 bg-transparent text-foreground font-bold uppercase tracking-widest hover:border-primary hover:text-primary transition-all",
       },
       size: {
         default: "h-10 px-4 py-2",
