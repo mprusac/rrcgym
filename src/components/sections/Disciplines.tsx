@@ -4,6 +4,7 @@ import SectionHeading from "@/components/SectionHeading";
 import mmaImage from "@/assets/discipline-mma.jpg";
 import bjjImage from "@/assets/discipline-bjj.jpg";
 import kickboxImage from "@/assets/discipline-kickbox.jpg";
+import boksImage from "@/assets/discipline-boks.jpg";
 
 const items = [
   {
@@ -28,6 +29,7 @@ const items = [
     icon: Hand,
     title: "Boks",
     desc: "Klasična škola udaranja - tehnika ruku, rad nogu, ritam i taktika u ringu.",
+    image: boksImage,
   },
 ];
 
