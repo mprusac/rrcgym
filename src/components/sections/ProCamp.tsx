@@ -99,23 +99,6 @@ const ProCamp = () => (
             UFC-a do ONE Championshipa i KSW-a.
           </p>
 
-          {guests.length > 0 && (
-            <div className="mt-10">
-              <div className="text-xs font-semibold uppercase tracking-widest text-primary">
-                I još
-              </div>
-              <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
-                {guests.map((g) => (
-                  <li
-                    key={g}
-                    className="flex items-center gap-3 border-l-2 border-primary/60 pl-3 font-display text-xl text-foreground"
-                  >
-                    {g}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
 
         <div>
