@@ -37,7 +37,7 @@ const Navbar = () => {
           RRC <span className="ml-1">GYM</span>
         </a>
 
-        <nav className="hidden items-center gap-8 lg:flex ml-auto" aria-label="Glavna navigacija">
+        <nav className="ml-auto hidden items-center gap-8 lg:flex" aria-label="Glavna navigacija">
           {links.map((l) => (
             <a
               key={l.href}
@@ -49,7 +49,7 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="ml-8 hidden lg:block">
           <Button asChild variant="fight" size="default">
             <a href="#kontakt">Prijavi se</a>
           </Button>
