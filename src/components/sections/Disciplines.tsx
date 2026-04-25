@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Swords, Hand, Zap, Shield } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import mmaImage from "@/assets/discipline-mma.jpg";
+import bjjImage from "@/assets/discipline-bjj.jpg";
 
 const items = [
   {
@@ -14,6 +15,7 @@ const items = [
     icon: Shield,
     title: "Brazilian Jiu-Jitsu",
     desc: 'Parterna tehnika i submisije pod vodstvom Fabiana „Jacarezinho" Silve, BJJ crnog pojasa.',
+    image: bjjImage,
   },
   {
     icon: Zap,
