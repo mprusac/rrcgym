@@ -66,7 +66,7 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background/95 backdrop-blur-lg lg:hidden">
+        <div className="border-t border-border/40 bg-background/30 backdrop-blur-md lg:hidden">
           <nav className="container-x flex flex-col gap-1 py-4" aria-label="Mobilna navigacija">
             {links.map((l) => (
               <a
