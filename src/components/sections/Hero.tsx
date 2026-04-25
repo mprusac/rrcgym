@@ -2,12 +2,14 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import heroImage from "@/assets/hero-team.png";
 import logo from "@/assets/rrc-logo.png";
+import VideoModal from "@/components/VideoModal";
 
 const Hero = () => {
   const ref = useRef<HTMLElement>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
