@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Swords, Hand, Zap, Shield } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
+import mmaImage from "@/assets/discipline-mma.jpg";
 
 const items = [
   {
     icon: Swords,
     title: "MMA",
     desc: "Mješovite borilačke vještine - udaračka tehnika, hrvanje i parter, integrirano u jedan sustav. Za sve razine.",
+    image: mmaImage,
   },
   {
     icon: Shield,
@@ -44,16 +46,27 @@ const Disciplines = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="group relative flex flex-col gap-6 bg-background p-8 transition-colors hover:bg-surface-elevated md:p-12"
+            className="group relative flex flex-col gap-6 overflow-hidden bg-background p-8 transition-colors hover:bg-surface-elevated md:p-12"
           >
-            <div className="flex h-14 w-14 items-center justify-center border border-primary/40 bg-primary/10 text-primary transition-all group-hover:bg-primary group-hover:text-primary-foreground">
+            {it.image && (
+              <>
+                <img
+                  src={it.image}
+                  alt={`${it.title} trening u RRC Gym dvorani`}
+                  className="absolute inset-0 h-full w-full object-cover opacity-30 transition-opacity duration-500 group-hover:opacity-40"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+              </>
+            )}
+            <div className="relative flex h-14 w-14 items-center justify-center border border-primary/40 bg-primary/10 text-primary transition-all group-hover:bg-primary group-hover:text-primary-foreground">
               <it.icon className="h-7 w-7" />
             </div>
-            <div>
+            <div className="relative">
               <h3 className="font-display text-3xl text-foreground md:text-4xl">{it.title}</h3>
               <p className="mt-3 max-w-md text-muted-foreground">{it.desc}</p>
             </div>
-            <div className="mt-2 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-primary">
+            <div className="relative mt-2 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-primary">
               Saznaj više
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>
