@@ -54,7 +54,7 @@ const Soldic = () => (
           Soldić
         </h2>
 
-        <p className="mt-8 max-w-xl text-base text-muted-foreground md:text-lg">
+        <p className="mt-8 max-w-none text-base text-muted-foreground md:text-lg">
           Aktivni <span className="font-semibold text-foreground">ONE Championship</span> borac,
           dvostruki <span className="font-semibold text-foreground">KSW prvak</span>, rekord 21 — 4 — 1 NC.
           Rođen u Vitezu, trenira iz Viteza. Kad nije u Kataru ili Manili, ovdje je na strunjači
