@@ -81,6 +81,10 @@
   }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    /* Firefox scrollbar */
+    scrollbar-color: hsl(var(--primary)) hsl(0 0% 0%);
+    scrollbar-width: thin;
   }
   body {
     @apply bg-background text-foreground antialiased;
@@ -93,6 +97,48 @@
   }
   .tabular {
     font-variant-numeric: tabular-nums;
+  }
+
+  /* WebKit scrollbar — black track, red thumb */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border: 2px solid #000;
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-deep));
+  }
+
+  /* Smooth scroll, but respect users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Page load fade */
+  body {
+    animation: page-fade-in 0.6s ease-out both;
+  }
+  @keyframes page-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Selection */
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
   }
 }
 
