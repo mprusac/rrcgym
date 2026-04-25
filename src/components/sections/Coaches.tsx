@@ -39,7 +39,7 @@ const Coaches = () => (
           <h2 className="font-display text-5xl leading-[0.9] text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
             Tim koji
             <br />
-            dr<span className="text-gradient-red">ž</span>i dvoranu
+            drži dvoranu
           </h2>
         </motion.div>
         <motion.div
