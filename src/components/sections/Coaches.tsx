@@ -50,7 +50,7 @@ const Coaches = () => (
           className="flex items-end lg:col-span-5"
         >
           <p className="max-w-md text-muted-foreground md:text-lg">
-            Soldić je lice kluba. Dvoranu drži tim koji radi svaki dan — od jutarnjeg
+            Soldić je lice kluba. Dvoranu drži tim koji radi svaki dan - od jutarnjeg
             treninga djece do večernjeg sparinga.
           </p>
         </motion.div>
