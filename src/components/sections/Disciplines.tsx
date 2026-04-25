@@ -29,6 +29,7 @@ const items = [
     icon: Hand,
     title: "Boks",
     desc: "Klasična škola udaranja - tehnika ruku, rad nogu, ritam i taktika u ringu.",
+    image: boksImage,
   },
 ];
 
