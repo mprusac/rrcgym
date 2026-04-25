@@ -89,7 +89,6 @@ const Hero = () => {
         src="/videos/dvorana.mp4"
         poster="/videos/dvorana-poster.jpg"
         title="Iza vrata RRC Gyma"
-        subtitle="Vitez · Dvorana"
       />
 
       {/* Scroll indicator */}
