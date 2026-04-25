@@ -29,54 +29,93 @@ const items = [
   },
 ];
 
-const Disciplines = () => (
-  <section id="discipline" className="relative bg-surface py-24 md:py-32">
-    <div className="container-x">
-      <SectionHeading
-        eyebrow="Discipline"
-        title="Četiri škole pod jednim krovom"
-        subtitle="Svaki program vode iskusni treneri uz pristup vrhunskoj opremi i prostoru."
-        center
-      />
+const Disciplines = () => {
+  const featured = items.filter((it) => it.image);
+  const compact = items.filter((it) => !it.image);
 
-      <div className="mt-16 grid gap-px bg-border md:grid-cols-2">
-        {items.map((it, i) => (
-          <motion.a
-            key={it.title}
-            href="#kontakt"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="group relative flex flex-col gap-6 overflow-hidden bg-background p-8 transition-colors hover:bg-surface-elevated md:p-12"
-          >
-            {it.image && (
-              <>
+  return (
+    <section id="discipline" className="relative bg-surface py-24 md:py-32">
+      <div className="container-x">
+        <SectionHeading
+          eyebrow="Discipline"
+          title="Četiri škole pod jednim krovom"
+          subtitle="Svaki program vode iskusni treneri uz pristup vrhunskoj opremi i prostoru."
+          center
+        />
+
+        {/* Featured discipline rows — slika + tekst, puna širina */}
+        <div className="mt-16 space-y-px bg-border">
+          {featured.map((it, i) => (
+            <motion.a
+              key={it.title}
+              href="#kontakt"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className={`group grid gap-px overflow-hidden bg-background md:grid-cols-2 ${
+                i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+              }`}
+            >
+              <div className="relative aspect-[4/3] w-full overflow-hidden md:aspect-auto md:min-h-[420px]">
                 <img
                   src={it.image}
                   alt={`${it.title} trening u RRC Gym dvorani`}
-                  className="absolute inset-0 h-full w-full object-cover object-top opacity-30 transition-opacity duration-500 group-hover:opacity-40"
+                  className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-              </>
-            )}
-            <div className="relative flex h-14 w-14 items-center justify-center border border-primary/40 bg-primary/10 text-primary transition-all group-hover:bg-primary group-hover:text-primary-foreground">
-              <it.icon className="h-7 w-7" />
-            </div>
-            <div className="relative">
-              <h3 className="font-display text-3xl text-foreground md:text-4xl">{it.title}</h3>
-              <p className="mt-3 max-w-md text-muted-foreground">{it.desc}</p>
-            </div>
-            <div className="relative mt-2 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-primary">
-              Saznaj više
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </div>
-          </motion.a>
-        ))}
+                <div className="absolute inset-0 bg-gradient-to-r from-background/30 to-transparent" />
+              </div>
+              <div className="flex flex-col justify-center gap-6 bg-background p-8 transition-colors group-hover:bg-surface-elevated md:p-12 lg:p-16">
+                <div className="flex h-14 w-14 items-center justify-center border border-primary/40 bg-primary/10 text-primary transition-all group-hover:bg-primary group-hover:text-primary-foreground">
+                  <it.icon className="h-7 w-7" />
+                </div>
+                <div>
+                  <h3 className="font-display text-4xl text-foreground md:text-5xl lg:text-6xl">
+                    {it.title}
+                  </h3>
+                  <p className="mt-4 max-w-md text-base text-muted-foreground md:text-lg">
+                    {it.desc}
+                  </p>
+                </div>
+                <div className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-primary">
+                  Saznaj više
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+
+        {/* Compact discipline grid — bez slika */}
+        <div className="mt-px grid gap-px bg-border md:grid-cols-2">
+          {compact.map((it, i) => (
+            <motion.a
+              key={it.title}
+              href="#kontakt"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="group flex flex-col gap-6 bg-background p-8 transition-colors hover:bg-surface-elevated md:p-12"
+            >
+              <div className="flex h-14 w-14 items-center justify-center border border-primary/40 bg-primary/10 text-primary transition-all group-hover:bg-primary group-hover:text-primary-foreground">
+                <it.icon className="h-7 w-7" />
+              </div>
+              <div>
+                <h3 className="font-display text-3xl text-foreground md:text-4xl">{it.title}</h3>
+                <p className="mt-3 max-w-md text-muted-foreground">{it.desc}</p>
+              </div>
+              <div className="mt-2 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-primary">
+                Saznaj više
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
+            </motion.a>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Disciplines;
