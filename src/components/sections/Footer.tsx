@@ -21,8 +21,7 @@ const Footer = () => (
       <div className="grid gap-10 lg:grid-cols-3">
         <div>
           <a href="#pocetna" className="flex items-baseline gap-1 font-display text-3xl tracking-wide">
-            <span className="text-primary">R</span>
-            <span className="text-foreground">RC</span>
+            <span className="text-foreground">RRC</span>
             <span className="ml-1 text-foreground">GYM</span>
           </a>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
