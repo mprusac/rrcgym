@@ -242,24 +242,34 @@ const Prijava = () => {
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                 {DISCIPLINES.map((d) => {
                   const active = d.v === discipline;
-                  const Icon = d.icon;
                   return (
                     <button
                       key={d.v}
                       onClick={() => pickDiscipline(d.v)}
                       className={cn(
-                        "group relative flex flex-col items-center justify-center gap-2 rounded-2xl border p-5 text-center transition-all md:p-6",
+                        "group relative flex flex-col items-center justify-center gap-3 rounded-2xl border p-5 text-center transition-all md:p-6",
                         active
                           ? "border-primary bg-primary/10 shadow-red"
                           : "border-border bg-card/40 hover:border-primary/60 hover:bg-card",
                       )}
                     >
-                      <Icon
+                      <div
                         className={cn(
-                          "h-7 w-7 transition-colors md:h-8 md:w-8",
-                          active ? "text-primary" : "text-muted-foreground group-hover:text-foreground",
+                          "flex h-20 w-20 items-center justify-center rounded-xl transition-all md:h-24 md:w-24",
+                          active
+                            ? "bg-primary/15 scale-105"
+                            : "bg-muted/40 grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105",
                         )}
-                      />
+                      >
+                        <img
+                          src={d.img}
+                          alt={`${d.l} sticker`}
+                          loading="lazy"
+                          width={96}
+                          height={96}
+                          className="h-full w-full object-contain p-1.5 drop-shadow-[0_4px_10px_rgba(220,38,38,0.25)]"
+                        />
+                      </div>
                       <div className="font-display text-lg md:text-xl">{d.l}</div>
                       <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
                         {d.desc}
