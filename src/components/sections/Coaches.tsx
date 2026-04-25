@@ -71,7 +71,7 @@ const Coaches = () => (
               <img
                 src={c.img}
                 alt={c.role.replace("\n", " ")}
-                className="aspect-[4/5] h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-[1.03]"
+                className="aspect-[4/3] h-full w-full object-cover object-top grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-[1.03] sm:aspect-[4/5]"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
