@@ -65,11 +65,12 @@ const Disciplines = () => {
                 i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden md:aspect-auto md:min-h-[420px]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[4/3] md:aspect-auto md:min-h-[420px]">
                 <img
                   src={it.image}
                   alt={`${it.title} trening u RRC Gym dvorani`}
-                  className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  style={{ objectPosition: it.objectPosition }}
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-background/30 to-transparent" />
