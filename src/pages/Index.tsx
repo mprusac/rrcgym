@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import Soldic from "@/components/sections/Soldic";
+import Marquee from "@/components/sections/Marquee";
 import About from "@/components/sections/About";
 import Disciplines from "@/components/sections/Disciplines";
 import Coaches from "@/components/sections/Coaches";
