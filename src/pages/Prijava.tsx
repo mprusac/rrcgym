@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { z } from "zod";
-import { ArrowLeft, CheckCircle2, Loader2, Dumbbell, Zap, Hand, Swords } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Loader2, Dumbbell, Zap, Hand, Swords, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -65,7 +65,6 @@ const Prijava = () => {
   const [discipline, setDiscipline] = useState<DisciplineV>(
     (params.get("d") as DisciplineV) || "mma",
   );
-  const [selectedId, setSelectedId] = useState<string | null>(params.get("session"));
   const [done, setDone] = useState(false);
 
   const [form, setForm] = useState({
@@ -94,7 +93,7 @@ const Prijava = () => {
     })();
   }, []);
 
-  // Group sessions of selected discipline by day
+  // Group sessions of selected discipline by day (info only)
   const byDay = useMemo(() => {
     const map: Record<number, Session[]> = {};
     for (const d of DAYS) map[d.idx] = [];
@@ -104,47 +103,44 @@ const Prijava = () => {
     return map;
   }, [sessions, discipline]);
 
-  const selected = sessions.find((s) => s.id === selectedId) ?? null;
-
   const pickDiscipline = (d: DisciplineV) => {
     setDiscipline(d);
-    setSelectedId(null);
     const np = new URLSearchParams(params);
     np.set("d", d);
     np.delete("session");
     setParams(np, { replace: true });
   };
 
-  const handleSelect = (id: string) => {
-    setSelectedId(id);
-    const np = new URLSearchParams(params);
-    np.set("session", id);
-    setParams(np, { replace: true });
-    setTimeout(() => {
-      document.getElementById("forma")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
-  };
-
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selected) {
-      toast.error("Odaberi termin treninga");
-      return;
-    }
     const parsed = signupSchema.safeParse(form);
     if (!parsed.success) {
       toast.error(parsed.error.issues[0].message);
       return;
     }
     setSubmitting(true);
+
+    // Pick any session of this discipline to satisfy NOT NULL session_id
+    const anySession = sessions.find((s) => s.discipline === discipline);
+    if (!anySession) {
+      toast.error("Trenutno nema dostupnih termina za ovaj sport.");
+      setSubmitting(false);
+      return;
+    }
+
     const { error } = await supabase.from("training_signups").insert({
-      session_id: selected.id,
+      session_id: anySession.id,
       full_name: parsed.data.full_name,
       email: parsed.data.email,
       phone: parsed.data.phone,
       age: parsed.data.age ? Number(parsed.data.age) : null,
       experience: parsed.data.experience || null,
-      notes: parsed.data.notes || null,
+      notes: [
+        `Sport: ${DISCIPLINE_LABEL[discipline]}`,
+        parsed.data.notes ? `Napomena: ${parsed.data.notes}` : null,
+      ]
+        .filter(Boolean)
+        .join(" | "),
     });
     if (error) {
       toast.error("Slanje nije uspjelo. Pokušaj ponovno.");
@@ -157,14 +153,10 @@ const Prijava = () => {
         body: {
           templateName: "training-signup-confirmation",
           recipientEmail: parsed.data.email,
-          idempotencyKey: `training-${selected.id}-${parsed.data.email}-${Date.now()}`,
+          idempotencyKey: `training-${discipline}-${parsed.data.email}-${Date.now()}`,
           templateData: {
             name: parsed.data.full_name,
-            discipline: DISCIPLINE_LABEL[selected.discipline] ?? selected.discipline,
-            day: DAYS.find((d) => d.idx === selected.day_of_week)?.long ?? "",
-            startTime: selected.start_time.slice(0, 5),
-            endTime: selected.end_time.slice(0, 5),
-            coach: selected.coach,
+            discipline: DISCIPLINE_LABEL[discipline],
           },
         },
       });
@@ -197,11 +189,11 @@ const Prijava = () => {
             Prijava na trening
           </div>
           <h1 className="font-display text-4xl leading-tight md:text-6xl">
-            Odaberi sport pa <span className="text-primary">termin</span>
+            Odaberi <span className="text-primary">sport</span> i prijavi se
           </h1>
           <p className="mt-3 max-w-xl text-base text-muted-foreground md:text-lg">
-            Klikni disciplinu, pa odaberi termin iz tjednog rasporeda. Ispod ispuni svoje podatke
-            i šaljemo potvrdu na email.
+            Klikni disciplinu i pogledaj kad se odvijaju treninzi. Ispod ispuni svoje podatke i
+            šaljemo potvrdu na email.
           </p>
         </motion.header>
 
@@ -226,7 +218,6 @@ const Prijava = () => {
                 variant="outlineFight"
                 onClick={() => {
                   setDone(false);
-                  setSelectedId(null);
                   setForm({ full_name: "", email: "", phone: "", age: "", experience: "", notes: "" });
                 }}
               >
@@ -278,15 +269,18 @@ const Prijava = () => {
               </div>
             </section>
 
-            {/* Step 2 — Schedule grid */}
+            {/* Step 2 — Schedule (info only) */}
             <section aria-labelledby="step-2" className="mt-12">
               <div className="mb-4 flex items-baseline gap-3">
                 <span className="font-display text-sm text-primary">02</span>
                 <h2 id="step-2" className="font-display text-2xl md:text-3xl">
-                  Tjedni raspored —{" "}
+                  Raspored treninga —{" "}
                   <span className="text-primary">{DISCIPLINE_LABEL[discipline]}</span>
                 </h2>
               </div>
+              <p className="mb-4 text-sm text-muted-foreground">
+                Informativno — vidi kad se odvijaju treninzi. Termin se ne bira ovdje.
+              </p>
 
               {loading ? (
                 <div className="flex h-40 items-center justify-center text-muted-foreground">
@@ -312,14 +306,9 @@ const Prijava = () => {
                           {byDay[d.idx].length === 0 ? (
                             <div className="text-sm text-muted-foreground/60">Nema termina</div>
                           ) : (
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-col gap-2">
                               {byDay[d.idx].map((s) => (
-                                <SlotButton
-                                  key={s.id}
-                                  s={s}
-                                  active={s.id === selectedId}
-                                  onClick={() => handleSelect(s.id)}
-                                />
+                                <SlotInfo key={s.id} s={s} />
                               ))}
                             </div>
                           )}
@@ -343,14 +332,7 @@ const Prijava = () => {
                                 —
                               </div>
                             ) : (
-                              byDay[d.idx].map((s) => (
-                                <SlotButton
-                                  key={s.id}
-                                  s={s}
-                                  active={s.id === selectedId}
-                                  onClick={() => handleSelect(s.id)}
-                                />
-                              ))
+                              byDay[d.idx].map((s) => <SlotInfo key={s.id} s={s} />)
                             )}
                           </div>
                         </div>
@@ -371,22 +353,12 @@ const Prijava = () => {
               </div>
 
               <div className="rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-md md:p-8">
-                {selected ? (
-                  <div className="mb-6 rounded-lg border border-primary/30 bg-primary/10 p-3 text-sm">
-                    Odabrano:{" "}
-                    <span className="font-semibold text-primary">
-                      {DISCIPLINE_LABEL[selected.discipline]}
-                    </span>{" "}
-                    ·{" "}
-                    {DAYS.find((d) => d.idx === selected.day_of_week)?.long}{" "}
-                    {selected.start_time.slice(0, 5)}–{selected.end_time.slice(0, 5)} ·{" "}
-                    <span className="text-muted-foreground">trener {selected.coach}</span>
-                  </div>
-                ) : (
-                  <p className="mb-6 text-sm text-muted-foreground">
-                    Odaberi termin iz rasporeda iznad da nastaviš.
-                  </p>
-                )}
+                <div className="mb-6 rounded-lg border border-primary/30 bg-primary/10 p-3 text-sm">
+                  Prijavljuješ se za:{" "}
+                  <span className="font-semibold text-primary">
+                    {DISCIPLINE_LABEL[discipline]}
+                  </span>
+                </div>
 
                 <form onSubmit={onSubmit} className="grid gap-4">
                   <div className="grid gap-2">
@@ -450,7 +422,7 @@ const Prijava = () => {
                       rows={3}
                       value={form.notes}
                       onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                      placeholder="Ozljede, alergije, pitanja..."
+                      placeholder="Ozljede, alergije, pitanja, željeni termin..."
                     />
                   </div>
 
@@ -458,7 +430,7 @@ const Prijava = () => {
                     type="submit"
                     variant="fight"
                     size="lg"
-                    disabled={submitting || !selected}
+                    disabled={submitting}
                     className="mt-2 w-full sm:w-auto"
                   >
                     {submitting ? (
@@ -470,7 +442,7 @@ const Prijava = () => {
                     )}
                   </Button>
                   <p className="text-xs text-muted-foreground">
-                    Slanjem prijave pristaješ da te kontaktiramo radi potvrde termina.
+                    Slanjem prijave pristaješ da te kontaktiramo radi dogovora termina.
                   </p>
                 </form>
               </div>
@@ -482,37 +454,19 @@ const Prijava = () => {
   );
 };
 
-const SlotButton = ({
-  s,
-  active,
-  onClick,
-}: {
-  s: Session;
-  active: boolean;
-  onClick: () => void;
-}) => (
-  <button
-    onClick={onClick}
-    className={cn(
-      "w-full rounded-lg border px-2.5 py-2 text-left transition-all",
-      active
-        ? "border-primary bg-primary text-primary-foreground shadow-red"
-        : "border-border bg-background hover:border-primary/60 hover:bg-card",
-    )}
-  >
-    <div className="font-display text-sm leading-tight tabular md:text-base">
+const SlotInfo = ({ s }: { s: Session }) => (
+  <div className="rounded-lg border border-border bg-background px-2.5 py-2">
+    <div className="flex items-center gap-1.5 font-display text-sm leading-tight md:text-base">
+      <Clock className="h-3.5 w-3.5 text-primary" />
       {s.start_time.slice(0, 5)}–{s.end_time.slice(0, 5)}
     </div>
     <div
-      className={cn(
-        "mt-0.5 truncate text-[10px] leading-tight md:text-[11px]",
-        active ? "text-primary-foreground/85" : "text-muted-foreground",
-      )}
+      className="mt-0.5 truncate text-[10px] leading-tight text-muted-foreground md:text-[11px]"
       title={`${s.coach} · ${s.level}`}
     >
       {s.coach}
     </div>
-  </button>
+  </div>
 );
 
 export default Prijava;
