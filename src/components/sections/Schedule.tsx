@@ -5,7 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 
 const days = ["Pon", "Uto", "Sri", "Čet", "Pet"];
 const slots = [
-  { time: "17:00", items: ["Boks", "—", "Kickboxing", "—", "Boks"] },
+  { time: "17:00", items: ["Boks", "-", "Kickboxing", "-", "Boks"] },
   { time: "18:30", items: ["MMA", "BJJ", "MMA", "BJJ", "MMA"] },
   { time: "20:00", items: ["Kickboxing", "Open mat", "Boks", "Open mat", "Kondicija"] },
 ];
@@ -42,8 +42,8 @@ const Schedule = () => (
                 <td className="p-4 font-display tabular text-lg text-primary">{row.time}</td>
                 {row.items.map((it, i) => (
                   <td key={i} className="p-4">
-                    {it === "—" ? (
-                      <span className="text-muted-foreground/50">—</span>
+                    {it === "-" ? (
+                      <span className="text-muted-foreground/50">-</span>
                     ) : (
                       <span className="inline-block border-l-2 border-primary pl-2 text-sm font-semibold uppercase tracking-wider text-foreground">
                         {it}

@@ -1,7 +1,7 @@
 const items = [
   "KSW WELTERWEIGHT",
   "OKTAGON",
-  "21 – 4 – 1NC",
+  "21-4-1 NC",
   "VITEZ · BIH",
   "ONE CHAMPIONSHIP",
   "ROBOCOP",
@@ -13,7 +13,7 @@ const Marquee = () => {
   const loop = [...items, ...items];
   return (
     <section
-      aria-label="Soldić — istaknuto"
+      aria-label="Soldić - istaknuto"
       className="relative overflow-hidden border-y border-border bg-background py-5"
     >
       <div className="flex w-max animate-marquee items-center gap-12 whitespace-nowrap">

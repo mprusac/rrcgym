@@ -18,7 +18,7 @@ const Hero = () => {
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <img
           src={heroImage}
-          alt="RRC Gym tim — Roberto Soldić s borcima i trenerima u dvorani"
+          alt="RRC Gym tim - Roberto Soldić s borcima i trenerima u dvorani"
           className="h-full w-full object-cover"
           loading="eager"
         />

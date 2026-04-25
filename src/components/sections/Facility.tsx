@@ -26,7 +26,7 @@ const Facility = () => (
       <SectionHeading
         eyebrow="Dvorana i oprema"
         title="Oprema svjetske klase"
-        subtitle="Sve što treba za ozbiljan rad — od prvog treninga do profesionalnog kampa."
+        subtitle="Sve što treba za ozbiljan rad - od prvog treninga do profesionalnog kampa."
         center
       />
 

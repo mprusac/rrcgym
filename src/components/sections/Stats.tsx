@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "21–4", label: "Soldićev MMA rekord" },
+  { value: "21-4", label: "Soldićev MMA rekord" },
   { value: "6×6 m", label: "Profesionalni MMA kavez" },
   { value: "4", label: "Borilačke discipline" },
   { value: "2025", label: "Godina otvorenja" },

@@ -45,7 +45,7 @@ const Index = () => {
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
-      <h1 className="sr-only">RRC Gym Vitez — Borilački centar Roberta Soldića</h1>
+      <h1 className="sr-only">RRC Gym Vitez - Borilački centar Roberta Soldića</h1>
       <Hero />
       <Soldic />
       <Marquee />

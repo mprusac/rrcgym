@@ -38,9 +38,9 @@ const About = () => (
             a iza projekta stoje obitelj Rajković i MMA borac Roberto „Robocop" Soldić.
           </p>
           <p>
-            Naša misija je jednostavna — graditi novu generaciju boraca i rekreativaca u srcu
+            Naša misija je jednostavna - graditi novu generaciju boraca i rekreativaca u srcu
             Bosne, uz uvjete koji se ne razlikuju od onih u najboljim kampovima Europe i svijeta.
-            Vrata su otvorena svima — od djece od 8 godina do profesionalaca koji se pripremaju
+            Vrata su otvorena svima - od djece od 8 godina do profesionalaca koji se pripremaju
             za UFC, ONE Championship i KSW.
           </p>
         </div>
@@ -51,7 +51,7 @@ const About = () => (
             „Želimo graditi borilačku priču iz srca Bosne i Hercegovine."
           </p>
           <footer className="mt-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            — Roberto „Robocop" Soldić
+            - Roberto „Robocop" Soldić
           </footer>
         </blockquote>
       </motion.div>

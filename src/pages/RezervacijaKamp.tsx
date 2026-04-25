@@ -33,14 +33,14 @@ const schema = z.object({
   email: z.string().trim().email("Neispravan email").max(255),
   phone: z.string().trim().min(5, "Unesite broj telefona").max(30),
   country: z.string().trim().min(2, "Unesite državu").max(60),
-  age: z.string().optional().refine((v) => !v || (/^\d+$/.test(v) && +v >= 14 && +v <= 65), "Dob 14–65"),
+  age: z.string().optional().refine((v) => !v || (/^\d+$/.test(v) && +v >= 14 && +v <= 65), "Dob 14-65"),
   club: z.string().max(80).optional(),
   weight_class: z.string().max(40).optional(),
   discipline: z.enum(["mma", "kickbox", "boks", "jiu_jitsu", "drugo"]),
   experience_level: z.string().min(2, "Odaberi razinu").max(60),
   arrival_date: z.string().min(1, "Datum dolaska"),
   departure_date: z.string().min(1, "Datum odlaska"),
-  sparring_partners: z.string().refine((v) => /^\d+$/.test(v) && +v >= 0 && +v <= 20, "0–20"),
+  sparring_partners: z.string().refine((v) => /^\d+$/.test(v) && +v >= 0 && +v <= 20, "0-20"),
   accommodation: z.string().min(2, "Odaberi smještaj").max(60),
   dietary_notes: z.string().max(300).optional(),
   injuries: z.string().max(300).optional(),
@@ -72,7 +72,7 @@ const RezervacijaKamp = () => {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    document.title = "Rezervacija kampa — RRC Gym";
+    document.title = "Rezervacija kampa - RRC Gym";
   }, []);
 
   const set = <K extends keyof typeof form>(k: K, v: (typeof form)[K]) =>
