@@ -14,7 +14,86 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      training_sessions: {
+        Row: {
+          capacity: number
+          coach: string
+          created_at: string
+          day_of_week: number
+          discipline: Database["public"]["Enums"]["training_discipline"]
+          end_time: string
+          id: string
+          level: string
+          start_time: string
+        }
+        Insert: {
+          capacity?: number
+          coach: string
+          created_at?: string
+          day_of_week: number
+          discipline: Database["public"]["Enums"]["training_discipline"]
+          end_time: string
+          id?: string
+          level?: string
+          start_time: string
+        }
+        Update: {
+          capacity?: number
+          coach?: string
+          created_at?: string
+          day_of_week?: number
+          discipline?: Database["public"]["Enums"]["training_discipline"]
+          end_time?: string
+          id?: string
+          level?: string
+          start_time?: string
+        }
+        Relationships: []
+      }
+      training_signups: {
+        Row: {
+          age: number | null
+          created_at: string
+          email: string
+          experience: string | null
+          full_name: string
+          id: string
+          notes: string | null
+          phone: string
+          session_id: string
+        }
+        Insert: {
+          age?: number | null
+          created_at?: string
+          email: string
+          experience?: string | null
+          full_name: string
+          id?: string
+          notes?: string | null
+          phone: string
+          session_id: string
+        }
+        Update: {
+          age?: number | null
+          created_at?: string
+          email?: string
+          experience?: string | null
+          full_name?: string
+          id?: string
+          notes?: string | null
+          phone?: string
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "training_signups_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "training_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +102,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      training_discipline: "mma" | "kickbox" | "boks" | "jiu_jitsu"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +229,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      training_discipline: ["mma", "kickbox", "boks", "jiu_jitsu"],
+    },
   },
 } as const
