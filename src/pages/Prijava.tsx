@@ -26,10 +26,10 @@ const DAYS = [
 ];
 
 const DISCIPLINES = [
-  { v: "mma", l: "MMA", desc: "Kompletan borac", icon: Swords },
-  { v: "kickbox", l: "Kickbox", desc: "Eksplozivni udarci", icon: Zap },
-  { v: "boks", l: "Boks", desc: "Slatka znanost", icon: Dumbbell },
-  { v: "jiu_jitsu", l: "Jiu-Jitsu", desc: "Igra na partu", icon: Hand },
+  { v: "mma", l: "MMA", desc: "Stand-up + grappling u jednom", img: sportMma },
+  { v: "kickbox", l: "Kickbox", desc: "Udarci rukama i nogama", img: sportKickbox },
+  { v: "boks", l: "Boks", desc: "Tehnika, brzina, footwork", img: sportBoks },
+  { v: "jiu_jitsu", l: "Jiu-Jitsu", desc: "Borba u parteru i submisije", img: sportJiuJitsu },
 ] as const;
 
 type DisciplineV = (typeof DISCIPLINES)[number]["v"];
