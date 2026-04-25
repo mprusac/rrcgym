@@ -104,17 +104,6 @@ const VideoModal = ({ open, onClose, src, poster, title, subtitle }: VideoModalP
             transition={{ type: "spring", stiffness: 280, damping: 28 }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Eyebrow tag */}
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-              className="mb-3 inline-flex items-center gap-2 border border-primary/40 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary"
-            >
-              <span className="inline-block h-1.5 w-1.5 animate-pulse-red rounded-full bg-primary" />
-              Live iz dvorane
-            </motion.div>
-
             {/* Video frame with red border glow */}
             <motion.div
               className="relative w-full overflow-hidden rounded-2xl border border-primary/40 bg-black shadow-[0_0_60px_-10px_hsl(var(--primary)/0.6),0_30px_80px_-20px_rgba(0,0,0,0.8)]"
