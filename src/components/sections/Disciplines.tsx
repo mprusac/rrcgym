@@ -53,7 +53,7 @@ const Disciplines = () => (
                 <img
                   src={it.image}
                   alt={`${it.title} trening u RRC Gym dvorani`}
-                  className="absolute inset-0 h-full w-full object-cover opacity-30 transition-opacity duration-500 group-hover:opacity-40"
+                  className="absolute inset-0 h-full w-full object-cover object-top opacity-30 transition-opacity duration-500 group-hover:opacity-40"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
