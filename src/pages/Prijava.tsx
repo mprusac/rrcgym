@@ -82,6 +82,7 @@ const Prijava = () => {
 
   useEffect(() => {
     document.title = "Prijava na trening - RRC Gym";
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
   useEffect(() => {

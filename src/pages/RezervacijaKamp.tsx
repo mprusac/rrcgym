@@ -73,6 +73,7 @@ const RezervacijaKamp = () => {
 
   useEffect(() => {
     document.title = "Rezervacija kampa - RRC Gym";
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
   const set = <K extends keyof typeof form>(k: K, v: (typeof form)[K]) =>
