@@ -1,32 +1,9 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import teamGroup from "@/assets/team-group.png";
 
 const About = () => (
-  <section id="o-nama" className="relative bg-background pb-24 pt-16 md:pb-32 md:pt-20">
-    {/* Team group banner above section */}
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7 }}
-      className="container-x mb-16 md:mb-24"
-    >
-      <div className="relative overflow-hidden rounded-lg border border-border shadow-red">
-        <img
-          src={teamGroup}
-          alt="RRC Gym tim - svi borci i članovi kluba zajedno u dvorani"
-          className="h-auto w-full object-cover"
-          loading="lazy"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-4 z-10 inline-flex items-center gap-2 border border-primary/40 bg-background/80 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary backdrop-blur-sm sm:bottom-6 sm:left-6 sm:text-xs">
-          <span className="inline-block h-1.5 w-1.5 animate-pulse-red rounded-full bg-primary" />
-          RRC Familija
-        </div>
-      </div>
-    </motion.div>
+  <section id="o-nama" className="relative bg-background py-24 md:py-32">
 
     <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
       <motion.div
