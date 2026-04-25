@@ -19,17 +19,17 @@ const Soldic = () => (
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7 }}
-        className="relative lg:col-span-6"
+        className="relative mx-auto w-full max-w-sm lg:col-span-5 lg:max-w-none"
       >
         <div className="relative overflow-hidden">
           <img
             src={soldicImg}
             alt="Roberto 'Robocop' Soldić - trening u ringu"
-            className="h-full w-full object-cover"
+            className="aspect-[4/5] h-full w-full object-cover"
             loading="lazy"
           />
-          <div className="absolute left-5 top-5">
-            <span className="inline-flex items-center bg-primary/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary-foreground">
+          <div className="absolute left-4 top-4">
+            <span className="inline-flex items-center bg-primary/90 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-primary-foreground">
               Suvlasnik · Trener
             </span>
           </div>
@@ -42,7 +42,7 @@ const Soldic = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7, delay: 0.1 }}
-        className="flex flex-col justify-center lg:col-span-6"
+        className="flex flex-col justify-center lg:col-span-7"
       >
         <div className="mb-6 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
           01 - Lice kluba
