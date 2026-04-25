@@ -19,11 +19,6 @@ const featuredGuests = [
   { name: "Selver Mahmić", image: selverMahmic },
 ];
 
-const guests = [
-  "Aleksandar Rakić",
-  "Gegard Mousasi",
-  "Ante Delija",
-];
 const orgs = ["UFC", "ONE Championship", "KSW", "FNC"];
 
 const ProCamp = () => (
