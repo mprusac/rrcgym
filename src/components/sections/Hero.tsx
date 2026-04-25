@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useRef } from "react";
 import heroImage from "@/assets/hero-team.png";
@@ -68,10 +69,10 @@ const Hero = () => {
           className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Button asChild variant="fight" size="lg">
-            <a href="#kontakt">
+            <Link to="/prijava">
               Prijavi se na trening
               <ArrowRight className="ml-1 h-4 w-4" />
-            </a>
+            </Link>
           </Button>
           <Button asChild variant="outlineFight" size="lg">
             <a href="#dvorana">

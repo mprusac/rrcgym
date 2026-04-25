@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -63,7 +64,7 @@ const Navbar = () => {
 
         <div className="hidden lg:block">
           <Button asChild variant="fight" size="default" className="rounded-full px-6">
-            <a href="#kontakt">Prijavi se</a>
+            <Link to="/prijava">Prijavi se</Link>
           </Button>
         </div>
 
@@ -91,7 +92,7 @@ const Navbar = () => {
               </a>
             ))}
             <Button asChild variant="fight" size="lg" className="mt-3 self-start rounded-full">
-              <a href="#kontakt" onClick={() => setOpen(false)}>Prijavi se</a>
+              <Link to="/prijava" onClick={() => setOpen(false)}>Prijavi se</Link>
             </Button>
           </nav>
         </div>
