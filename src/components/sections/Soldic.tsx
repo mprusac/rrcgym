@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import soldicImg from "@/assets/soldic.png";
 
 const stats = [
   { value: "21", label: "Pobjeda" },
@@ -22,7 +23,7 @@ const Soldic = () => (
       >
         <div className="relative overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1517438476312-10d79c077509?w=1200&q=80"
+            src={soldicImg}
             alt="Roberto 'Robocop' Soldić — trening u ringu"
             className="h-full w-full object-cover"
             loading="lazy"
