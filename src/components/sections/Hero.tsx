@@ -21,7 +21,7 @@ const Hero = () => {
         <img
           src={heroImage}
           alt="RRC Gym tim - Roberto Soldić s borcima i trenerima u dvorani"
-          className="h-full w-full object-cover object-center opacity-70"
+          className="h-full w-full object-cover"
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-hero" />
