@@ -3,6 +3,7 @@ import { ArrowUpRight, Swords, Hand, Zap, Shield } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import mmaImage from "@/assets/discipline-mma.jpg";
 import bjjImage from "@/assets/discipline-bjj.jpg";
+import kickboxImage from "@/assets/discipline-kickbox.jpg";
 
 const items = [
   {
@@ -21,6 +22,7 @@ const items = [
     icon: Zap,
     title: "Kickboxing",
     desc: "Eksplozivni udarački sport koji razvija snagu, brzinu i kondiciju kroz strukturiran trening.",
+    image: kickboxImage,
   },
   {
     icon: Hand,
