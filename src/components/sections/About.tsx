@@ -6,29 +6,6 @@ import teamGroup from "@/assets/team-group.png";
 const About = () => (
   <section id="o-nama" className="relative bg-background py-24 md:py-32">
 
-    {/* Group photo banner */}
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-      className="container-x mb-16 md:mb-24"
-    >
-      <div className="relative overflow-hidden border border-border shadow-red">
-        <img
-          src={teamGroup}
-          alt="RRC Gym tim - svi članovi kluba zajedno u dvorani"
-          className="h-auto w-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-4 z-10 inline-flex items-center gap-2 border border-primary/40 bg-background/80 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary backdrop-blur-sm">
-          <span className="h-1.5 w-1.5 animate-pulse-red rounded-full bg-primary" />
-          RRC Familija
-        </div>
-      </div>
-    </motion.div>
-
     <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
       <motion.div
         initial={{ opacity: 0, x: -24 }}
