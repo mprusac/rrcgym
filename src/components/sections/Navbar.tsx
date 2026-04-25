@@ -90,7 +90,7 @@ const Navbar = () => {
                 {l.label}
               </a>
             ))}
-            <Button asChild variant="fight" size="lg" className="mt-3 rounded-full">
+            <Button asChild variant="fight" size="lg" className="mt-3 self-start rounded-full">
               <a href="#kontakt" onClick={() => setOpen(false)}>Prijavi se</a>
             </Button>
           </nav>
