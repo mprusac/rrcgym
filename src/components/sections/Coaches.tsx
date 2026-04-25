@@ -6,15 +6,15 @@ import soldic from "@/assets/soldic.png";
 const coaches = [
   {
     img: coach1,
-    role: "Glavni\nTrener",
-    tags: ["Boks", "Kickboxing", "K-1"],
-    desc: "Vodi udaračke programe kluba. Profesionalna i rekreativna grupa.",
-  },
-  {
-    img: coach2,
     role: "Fabiano\nJacarezinho",
     tags: ["BJJ", "Crni pojas"],
     desc: "Brazilski crni pojas, gostujući trener. BJJ i no-gi program.",
+  },
+  {
+    img: coach2,
+    role: "Lucas\nAguiar",
+    tags: ["Boks", "Kickboxing", "K-1"],
+    desc: "Vodi udaračke programe kluba. Profesionalna i rekreativna grupa.",
   },
   {
     img: soldic,
