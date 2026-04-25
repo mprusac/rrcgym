@@ -34,18 +34,13 @@ const Navbar = () => {
       )}
     >
       <div className="container-x flex h-16 items-center justify-between md:h-20">
-        <a
-          href="#pocetna"
-          className="group flex items-center gap-2 font-display text-2xl tracking-wide text-foreground md:text-3xl"
+        <Link
+          to="/"
+          className="font-display text-2xl tracking-wide text-foreground md:text-3xl"
           aria-label="RRC Gym početna"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-md border border-primary/60 bg-primary/10 text-sm font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground md:h-9 md:w-9 md:text-base">
-            R
-          </span>
-          <span>
-            RRC<span className="text-primary"> GYM</span>
-          </span>
-        </a>
+          RRC<span className="text-primary"> GYM</span>
+        </Link>
 
         <nav
           className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border border-border/60 bg-background/40 px-2 py-1.5 backdrop-blur-md lg:flex"

@@ -49,9 +49,7 @@ const Soldic = () => (
         </div>
 
         <h2 className="font-display text-6xl leading-[0.9] text-foreground sm:text-7xl md:text-8xl">
-          Robert
-          <br />
-          <span className="text-gradient-red">"Robocop"</span>
+          Robert <span className="text-gradient-red">"Robocop"</span>
           <br />
           Soldić
         </h2>
