@@ -14,7 +14,7 @@ const Hero = () => {
   return (
     <section ref={ref} id="pocetna" className="relative min-h-screen w-full overflow-hidden bg-grain">
       {/* Background image with parallax */}
-      <motion.div style={{ y }} className="absolute inset-0 -z-10">
+      <motion.div style={{ y }} className="absolute inset-0 z-0">
         <img
           src={heroImage}
           alt="RRC Gym tim — Roberto Soldić s borcima i trenerima u dvorani"
