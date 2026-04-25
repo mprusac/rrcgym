@@ -12,24 +12,28 @@ const items = [
     title: "MMA",
     desc: "Mješovite borilačke vještine - udaračka tehnika, hrvanje i parter, integrirano u jedan sustav. Za sve razine.",
     image: mmaImage,
+    objectPosition: "center 20%",
   },
   {
     icon: Shield,
     title: "Brazilian Jiu-Jitsu",
     desc: 'Parterna tehnika i submisije pod vodstvom Fabiana „Jacarezinho" Silve, BJJ crnog pojasa.',
     image: bjjImage,
+    objectPosition: "center 30%",
   },
   {
     icon: Zap,
     title: "Kickboxing",
     desc: "Eksplozivni udarački sport koji razvija snagu, brzinu i kondiciju kroz strukturiran trening.",
     image: kickboxImage,
+    objectPosition: "center 15%",
   },
   {
     icon: Hand,
     title: "Boks",
     desc: "Klasična škola udaranja - tehnika ruku, rad nogu, ritam i taktika u ringu.",
     image: boksImage,
+    objectPosition: "center 25%",
   },
 ];
 
@@ -61,11 +65,12 @@ const Disciplines = () => {
                 i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden md:aspect-auto md:min-h-[420px]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[4/3] md:aspect-auto md:min-h-[420px]">
                 <img
                   src={it.image}
                   alt={`${it.title} trening u RRC Gym dvorani`}
-                  className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  style={{ objectPosition: it.objectPosition }}
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-background/30 to-transparent" />
