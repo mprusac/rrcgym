@@ -56,7 +56,7 @@ const signupSchema = z.object({
   age: z
     .string()
     .optional()
-    .refine((v) => !v || (/^\d+$/.test(v) && +v >= 6 && +v <= 99), "Dob 6–99"),
+    .refine((v) => !v || (/^\d+$/.test(v) && +v >= 6 && +v <= 99), "Dob 6-99"),
   experience: z.string().max(60).optional(),
   notes: z.string().max(500).optional(),
 });
@@ -340,7 +340,7 @@ const Prijava = () => {
                           <div className="flex flex-col gap-2">
                             {byDay[d.idx].length === 0 ? (
                               <div className="rounded-lg border border-dashed border-border/60 px-2 py-3 text-center text-[11px] text-muted-foreground/50">
-                                —
+                                -
                               </div>
                             ) : (
                               byDay[d.idx].map((s) => <SlotInfo key={s.id} s={s} />)
@@ -469,7 +469,7 @@ const SlotInfo = ({ s }: { s: Session }) => (
   <div className="rounded-lg border border-border bg-background px-2.5 py-2">
     <div className="flex items-center gap-1.5 font-display text-sm leading-tight md:text-base">
       <Clock className="h-3.5 w-3.5 text-primary" />
-      {s.start_time.slice(0, 5)}–{s.end_time.slice(0, 5)}
+      {s.start_time.slice(0, 5)}-{s.end_time.slice(0, 5)}
     </div>
     <div
       className="mt-0.5 truncate text-[10px] leading-tight text-muted-foreground md:text-[11px]"
