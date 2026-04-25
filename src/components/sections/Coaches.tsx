@@ -12,7 +12,7 @@ const coaches = [
   },
   {
     img: coach2,
-    role: "Fabiano\nSilva",
+    role: "Fabiano\nJacarezinho",
     tags: ["BJJ", "Crni pojas", "Jacarezinho"],
     desc: "Brazilski crni pojas, gostujući trener. BJJ i no-gi program.",
   },
