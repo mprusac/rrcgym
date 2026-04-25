@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
 import obanElliott from "@/assets/guest-oban-elliott.jpg";
 import ahmedVila from "@/assets/guest-ahmed-vila.jpg";
+import juricBatur from "@/assets/guest-juric-batur.jpg";
 
 const featuredGuests = [
   { name: "Oban Elliott", image: obanElliott },
   { name: "Ahmed Vila", image: ahmedVila },
+  { name: "Jure Jurić & Martin Batur", image: juricBatur },
 ];
 
 const guests = [
@@ -16,7 +18,6 @@ const guests = [
   "Gegard Mousasi",
   "Ante Delija",
   "Ivan Erslan",
-  "Jure Jurić",
   'Francisco „Croata" Barrio',
 ];
 const orgs = ["UFC", "ONE Championship", "KSW", "FNC"];
