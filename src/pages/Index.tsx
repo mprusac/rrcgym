@@ -48,6 +48,7 @@ const Index = () => {
       <h1 className="sr-only">RRC Gym Vitez — Borilački centar Roberta Soldića</h1>
       <Hero />
       <Soldic />
+      <Marquee />
       <About />
       <Disciplines />
       <Coaches />
