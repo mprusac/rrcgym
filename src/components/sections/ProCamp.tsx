@@ -6,18 +6,19 @@ import SectionHeading from "@/components/SectionHeading";
 import obanElliott from "@/assets/guest-oban-elliott.jpg";
 import ahmedVila from "@/assets/guest-ahmed-vila.jpg";
 import juricBatur from "@/assets/guest-juric-batur.jpg";
+import ivanErslan from "@/assets/guest-ivan-erslan.jpg";
 
 const featuredGuests = [
   { name: "Oban Elliott", image: obanElliott },
   { name: "Ahmed Vila", image: ahmedVila },
   { name: "Jure Jurić & Martin Batur", image: juricBatur },
+  { name: "Ivan Erslan", image: ivanErslan },
 ];
 
 const guests = [
   "Aleksandar Rakić",
   "Gegard Mousasi",
   "Ante Delija",
-  "Ivan Erslan",
   'Francisco „Croata" Barrio',
 ];
 const orgs = ["UFC", "ONE Championship", "KSW", "FNC"];
