@@ -76,14 +76,21 @@ const Hero = () => {
               <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </Button>
-          <Button asChild variant="outlineFight" size="lg">
-            <a href="#dvorana">
-              <Play className="mr-1 h-4 w-4" />
-              Pogledaj dvoranu
-            </a>
+          <Button variant="outlineFight" size="lg" onClick={() => setVideoOpen(true)}>
+            <Play className="mr-1 h-4 w-4" />
+            Pogledaj dvoranu
           </Button>
         </motion.div>
       </motion.div>
+
+      <VideoModal
+        open={videoOpen}
+        onClose={() => setVideoOpen(false)}
+        src="/videos/dvorana.mp4"
+        poster="/videos/dvorana-poster.jpg"
+        title="Iza vrata RRC Gyma"
+        subtitle="Vitez · Dvorana"
+      />
 
       {/* Scroll indicator */}
       <motion.a
