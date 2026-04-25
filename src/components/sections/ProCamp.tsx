@@ -39,7 +39,7 @@ const ProCamp = () => (
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
     </div>
 
-    <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-20">
+    <div className="container-x">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -47,77 +47,98 @@ const ProCamp = () => (
         transition={{ duration: 0.6 }}
       >
         <SectionHeading eyebrow="Pro kamp" title="Destinacija za profesionalce" />
-        <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-          RRC Gym redovito ugošćuje vrhunske borce regije i Europe za pripremne kampove. Naša
-          dvorana, oprema i smještaj omogućuju cjelovitu pripremu za međunarodne mečeve - od
-          UFC-a do ONE Championshipa i KSW-a.
-        </p>
-
-        <div className="mt-10">
-          <div className="text-xs font-semibold uppercase tracking-widest text-primary">Gostovali kod nas</div>
-          <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
-            {guests.map((g) => (
-              <li key={g} className="flex items-center gap-3 border-l-2 border-primary/60 pl-3 font-display text-xl text-foreground">
-                {g}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-10">
-          <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Organizacije u kojima nastupaju</div>
-          <div className="mt-4 flex flex-wrap gap-3">
-            {orgs.map((o) => (
-              <span key={o} className="border border-border bg-surface px-4 py-2 font-display text-lg tracking-wider text-foreground">
-                {o}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <Button asChild variant="fight" size="xl" className="mt-10">
-          <Link to="/rezervacija-kamp">
-            Kontaktiraj za kamp rezervaciju
-            <ArrowRight className="ml-1 h-5 w-5" />
-          </Link>
-        </Button>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.96 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="relative"
-      >
-        <div className="absolute -left-4 -top-4 z-10 hidden h-24 w-24 border-l-4 border-t-4 border-primary lg:block" aria-hidden />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+      {/* Galerija boraca odmah ispod naslova */}
+      <div className="mt-12">
+        <div className="mb-6 flex items-center gap-3">
+          <span className="h-px flex-1 bg-border" />
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+            Gostovali kod nas
+          </span>
+          <span className="h-px flex-1 bg-border" />
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {featuredGuests.map((g, i) => (
             <motion.div
               key={g.name}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative aspect-[4/3] overflow-hidden border border-border"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="group relative aspect-[3/4] overflow-hidden border border-border"
             >
               <img
                 src={g.image}
                 alt={`${g.name} u RRC Gym dvorani`}
-                className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                className="h-full w-full object-cover object-top grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary">
-                  Gostovao kod nas
-                </div>
-                <div className="mt-1 font-display text-3xl text-foreground">
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <div className="font-display text-xl text-foreground md:text-2xl">
                   {g.name}
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-20"
+      >
+        <div>
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            RRC Gym redovito ugošćuje vrhunske borce regije i Europe za pripremne kampove. Naša
+            dvorana, oprema i smještaj omogućuju cjelovitu pripremu za međunarodne mečeve - od
+            UFC-a do ONE Championshipa i KSW-a.
+          </p>
+
+          {guests.length > 0 && (
+            <div className="mt-10">
+              <div className="text-xs font-semibold uppercase tracking-widest text-primary">
+                I još
+              </div>
+              <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
+                {guests.map((g) => (
+                  <li
+                    key={g}
+                    className="flex items-center gap-3 border-l-2 border-primary/60 pl-3 font-display text-xl text-foreground"
+                  >
+                    {g}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <div>
+          <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Organizacije u kojima nastupaju
+          </div>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {orgs.map((o) => (
+              <span
+                key={o}
+                className="border border-border bg-surface px-4 py-2 font-display text-lg tracking-wider text-foreground"
+              >
+                {o}
+              </span>
+            ))}
+          </div>
+
+          <Button asChild variant="fight" size="xl" className="mt-10">
+            <Link to="/rezervacija-kamp">
+              Kontaktiraj za kamp rezervaciju
+              <ArrowRight className="ml-1 h-5 w-5" />
+            </Link>
+          </Button>
         </div>
       </motion.div>
     </div>
