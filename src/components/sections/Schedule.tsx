@@ -61,8 +61,7 @@ const Schedule = () => (
         <div className="flex items-start gap-3">
           <Calendar className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
           <p className="text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">Za ulazak u dvoranu prijavite se na Sportin aplikaciju.</span>{" "}
-            Točni termini, rezervacije i prijave dostupni su isključivo putem aplikacije.
+            <span className="font-semibold text-foreground">Za ulazak u dvoranu prijavite se preko Sportin aplikacije.</span>
           </p>
         </div>
         <Button asChild variant="fight" size="default">
