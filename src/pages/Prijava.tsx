@@ -292,9 +292,6 @@ const Prijava = () => {
                   <span className="text-primary">{DISCIPLINE_LABEL[discipline]}</span>
                 </h2>
               </div>
-              <p className="mb-4 text-sm text-muted-foreground">
-                Informativno — vidi kad se odvijaju treninzi. Termin se ne bira ovdje.
-              </p>
 
               {loading ? (
                 <div className="flex h-40 items-center justify-center text-muted-foreground">
