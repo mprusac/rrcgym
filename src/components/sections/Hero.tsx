@@ -20,8 +20,8 @@ const Hero = () => {
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <img
           src={heroImage}
-          alt="RRC Gym tim - Roberto Soldić s borcima i trenerima u dvorani"
-          className="h-full w-full object-cover"
+          alt="RRC Gym tim - svi članovi kluba zajedno u dvorani"
+          className="h-full w-full object-cover object-center"
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-hero" />
