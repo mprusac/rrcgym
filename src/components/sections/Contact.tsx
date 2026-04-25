@@ -43,7 +43,7 @@ const Contact = () => {
             <iframe
               title="Lokacija RRC Gym Vitez"
               src="https://www.google.com/maps?q=44.168061,17.772802&z=15&output=embed"
-              className="h-full w-full grayscale"
+              className="h-full w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
