@@ -49,9 +49,9 @@ const Index = () => {
       <Hero />
       <Soldic />
       <Marquee />
+      <Coaches />
       <About />
       <Disciplines />
-      <Coaches />
       <Facility />
       <ProCamp />
       <Schedule />
