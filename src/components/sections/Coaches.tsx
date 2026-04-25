@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import coach1 from "@/assets/coach-1.png";
 import coach2 from "@/assets/coach-2.png";
-import coach3 from "@/assets/coach-3.png";
+import soldic from "@/assets/soldic.png";
 
 const coaches = [
   {
@@ -17,8 +17,8 @@ const coaches = [
     desc: "Brazilski crni pojas, gostujući trener. BJJ i no-gi program.",
   },
   {
-    img: coach3,
-    role: "Trener\nMMA",
+    img: soldic,
+    role: "Roberto\nSoldić",
     tags: ["MMA", "Grappling"],
     desc: "Vodi osnovnu MMA grupu i kampove za goste.",
   },
