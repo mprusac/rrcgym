@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
 
@@ -63,10 +64,10 @@ const ProCamp = () => (
         </div>
 
         <Button asChild variant="fight" size="xl" className="mt-10">
-          <a href="#kontakt">
+          <Link to="/rezervacija-kamp">
             Kontaktiraj za kamp rezervaciju
             <ArrowRight className="ml-1 h-5 w-5" />
-          </a>
+          </Link>
         </Button>
       </motion.div>
 

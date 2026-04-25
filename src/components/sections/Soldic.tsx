@@ -62,15 +62,19 @@ const Soldic = () => (
         </p>
 
         {/* Stat strip */}
-        <div className="mt-10 grid grid-cols-4 gap-px overflow-hidden border border-border bg-border">
+        <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-primary/30 bg-border sm:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.label} className="bg-background px-3 py-5 text-left">
-              <div className="font-display tabular text-3xl text-foreground sm:text-4xl">
+            <div
+              key={s.label}
+              className="group relative flex flex-col items-center justify-center bg-background px-3 py-7 text-center transition-colors hover:bg-primary/5"
+            >
+              <div className="font-display tabular text-5xl text-gradient-red drop-shadow-[0_2px_12px_rgba(220,38,38,0.35)] sm:text-6xl">
                 {s.value}
               </div>
-              <div className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+              <div className="mt-2 text-[11px] font-bold uppercase tracking-[0.25em] text-foreground/80">
                 {s.label}
               </div>
+              <span className="mt-3 h-0.5 w-8 bg-primary/70 transition-all group-hover:w-12" />
             </div>
           ))}
         </div>

@@ -14,6 +14,69 @@ export type Database = {
   }
   public: {
     Tables: {
+      camp_reservations: {
+        Row: {
+          accommodation: string
+          age: number | null
+          arrival_date: string
+          club: string | null
+          country: string
+          created_at: string
+          departure_date: string
+          dietary_notes: string | null
+          discipline: Database["public"]["Enums"]["camp_discipline"]
+          email: string
+          experience_level: string
+          extra_notes: string | null
+          full_name: string
+          id: string
+          injuries: string | null
+          phone: string
+          sparring_partners: number
+          weight_class: string | null
+        }
+        Insert: {
+          accommodation: string
+          age?: number | null
+          arrival_date: string
+          club?: string | null
+          country: string
+          created_at?: string
+          departure_date: string
+          dietary_notes?: string | null
+          discipline: Database["public"]["Enums"]["camp_discipline"]
+          email: string
+          experience_level: string
+          extra_notes?: string | null
+          full_name: string
+          id?: string
+          injuries?: string | null
+          phone: string
+          sparring_partners?: number
+          weight_class?: string | null
+        }
+        Update: {
+          accommodation?: string
+          age?: number | null
+          arrival_date?: string
+          club?: string | null
+          country?: string
+          created_at?: string
+          departure_date?: string
+          dietary_notes?: string | null
+          discipline?: Database["public"]["Enums"]["camp_discipline"]
+          email?: string
+          experience_level?: string
+          extra_notes?: string | null
+          full_name?: string
+          id?: string
+          injuries?: string | null
+          phone?: string
+          sparring_partners?: number
+          weight_class?: string | null
+        }
+        Relationships: []
+      }
       training_sessions: {
         Row: {
           capacity: number
@@ -102,6 +165,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
+      camp_discipline: "mma" | "kickbox" | "boks" | "jiu_jitsu" | "drugo"
       training_discipline: "mma" | "kickbox" | "boks" | "jiu_jitsu"
     }
     CompositeTypes: {
@@ -230,6 +294,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      camp_discipline: ["mma", "kickbox", "boks", "jiu_jitsu", "drugo"],
       training_discipline: ["mma", "kickbox", "boks", "jiu_jitsu"],
     },
   },
