@@ -55,7 +55,7 @@ const About = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        <SectionHeading eyebrow="O nama" title="Mjesto gdje sport živi, a strast raste" />
+        <SectionHeading eyebrow="O nama" title="Dvorana gdje znojem na treningu, štedimo krv u borbi" />
         <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
           <p>
             RRC Gym je otvoren u lipnju 2025. kao prvi borilački centar u Bosni i Hercegovini
