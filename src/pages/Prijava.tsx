@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { z } from "zod";
-import { ArrowLeft, CheckCircle2, Loader2, Dumbbell, Zap, Hand, Swords, Clock } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Loader2, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
+import sportMma from "@/assets/sport-mma.png";
+import sportKickbox from "@/assets/sport-kickbox.png";
+import sportBoks from "@/assets/sport-boks.png";
+import sportJiuJitsu from "@/assets/sport-jiu-jitsu.png";
 
 const DAYS = [
   { idx: 1, short: "Pon", long: "Ponedjeljak" },
@@ -22,10 +26,10 @@ const DAYS = [
 ];
 
 const DISCIPLINES = [
-  { v: "mma", l: "MMA", desc: "Kompletan borac", icon: Swords },
-  { v: "kickbox", l: "Kickbox", desc: "Eksplozivni udarci", icon: Zap },
-  { v: "boks", l: "Boks", desc: "Slatka znanost", icon: Dumbbell },
-  { v: "jiu_jitsu", l: "Jiu-Jitsu", desc: "Igra na partu", icon: Hand },
+  { v: "mma", l: "MMA", desc: "Stand-up + grappling u jednom", img: sportMma },
+  { v: "kickbox", l: "Kickbox", desc: "Udarci rukama i nogama", img: sportKickbox },
+  { v: "boks", l: "Boks", desc: "Tehnika, brzina, footwork", img: sportBoks },
+  { v: "jiu_jitsu", l: "Jiu-Jitsu", desc: "Borba u parteru i submisije", img: sportJiuJitsu },
 ] as const;
 
 type DisciplineV = (typeof DISCIPLINES)[number]["v"];
@@ -238,24 +242,34 @@ const Prijava = () => {
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                 {DISCIPLINES.map((d) => {
                   const active = d.v === discipline;
-                  const Icon = d.icon;
                   return (
                     <button
                       key={d.v}
                       onClick={() => pickDiscipline(d.v)}
                       className={cn(
-                        "group relative flex flex-col items-center justify-center gap-2 rounded-2xl border p-5 text-center transition-all md:p-6",
+                        "group relative flex flex-col items-center justify-center gap-3 rounded-2xl border p-5 text-center transition-all md:p-6",
                         active
                           ? "border-primary bg-primary/10 shadow-red"
                           : "border-border bg-card/40 hover:border-primary/60 hover:bg-card",
                       )}
                     >
-                      <Icon
+                      <div
                         className={cn(
-                          "h-7 w-7 transition-colors md:h-8 md:w-8",
-                          active ? "text-primary" : "text-muted-foreground group-hover:text-foreground",
+                          "flex h-20 w-20 items-center justify-center rounded-xl transition-all md:h-24 md:w-24",
+                          active
+                            ? "bg-primary/15 scale-105"
+                            : "bg-muted/40 grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105",
                         )}
-                      />
+                      >
+                        <img
+                          src={d.img}
+                          alt={`${d.l} sticker`}
+                          loading="lazy"
+                          width={96}
+                          height={96}
+                          className="h-full w-full object-contain p-1.5 drop-shadow-[0_4px_10px_rgba(220,38,38,0.25)]"
+                        />
+                      </div>
                       <div className="font-display text-lg md:text-xl">{d.l}</div>
                       <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
                         {d.desc}
@@ -278,9 +292,6 @@ const Prijava = () => {
                   <span className="text-primary">{DISCIPLINE_LABEL[discipline]}</span>
                 </h2>
               </div>
-              <p className="mb-4 text-sm text-muted-foreground">
-                Informativno — vidi kad se odvijaju treninzi. Termin se ne bira ovdje.
-              </p>
 
               {loading ? (
                 <div className="flex h-40 items-center justify-center text-muted-foreground">
