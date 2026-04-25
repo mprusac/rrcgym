@@ -37,7 +37,7 @@ const ProCamp = () => (
         <SectionHeading eyebrow="Pro kamp" title="Destinacija za profesionalce" />
         <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
           RRC Gym redovito ugošćuje vrhunske borce regije i Europe za pripremne kampove. Naša
-          dvorana, oprema i smještaj omogućuju cjelovitu pripremu za međunarodne mečeve — od
+          dvorana, oprema i smještaj omogućuju cjelovitu pripremu za međunarodne mečeve - od
           UFC-a do ONE Championshipa i KSW-a.
         </p>
 

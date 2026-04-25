@@ -57,7 +57,7 @@ const Footer = () => (
           <address className="mt-4 not-italic text-sm text-muted-foreground">
             Divjak b.b., 72250 Vitez<br />
             Bosna i Hercegovina<br />
-            Svaki dan · 09:00 — 20:30
+            Svaki dan · 09:00 - 20:30
           </address>
         </div>
       </div>

@@ -6,7 +6,7 @@ const items = [
   {
     icon: Swords,
     title: "MMA",
-    desc: "Mješovite borilačke vještine — udaračka tehnika, hrvanje i parter, integrirano u jedan sustav. Za sve razine.",
+    desc: "Mješovite borilačke vještine - udaračka tehnika, hrvanje i parter, integrirano u jedan sustav. Za sve razine.",
   },
   {
     icon: Shield,
@@ -21,7 +21,7 @@ const items = [
   {
     icon: Hand,
     title: "Boks",
-    desc: "Klasična škola udaranja — tehnika ruku, rad nogu, ritam i taktika u ringu.",
+    desc: "Klasična škola udaranja - tehnika ruku, rad nogu, ritam i taktika u ringu.",
   },
 ];
 

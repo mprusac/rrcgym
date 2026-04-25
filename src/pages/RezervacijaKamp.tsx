@@ -72,7 +72,7 @@ const RezervacijaKamp = () => {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    document.title = "Rezervacija kampa — RRC Gym";
+    document.title = "Rezervacija kampa - RRC Gym";
   }, []);
 
   const set = <K extends keyof typeof form>(k: K, v: (typeof form)[K]) =>

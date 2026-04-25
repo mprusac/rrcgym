@@ -81,7 +81,7 @@ const Prijava = () => {
   });
 
   useEffect(() => {
-    document.title = "Prijava na trening — RRC Gym";
+    document.title = "Prijava na trening - RRC Gym";
   }, []);
 
   useEffect(() => {
@@ -288,7 +288,7 @@ const Prijava = () => {
               <div className="mb-4 flex items-baseline gap-3">
                 <span className="font-display text-sm text-primary">02</span>
                 <h2 id="step-2" className="font-display text-2xl md:text-3xl">
-                  Raspored treninga —{" "}
+                  Raspored treninga -{" "}
                   <span className="text-primary">{DISCIPLINE_LABEL[discipline]}</span>
                 </h2>
               </div>

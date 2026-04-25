@@ -28,7 +28,7 @@ const Contact = () => {
         <SectionHeading
           eyebrow="Lokacija i kontakt"
           title="Dođi i osjeti dvoranu"
-          subtitle="Vrata su otvorena svaki dan. Najbolji je trening — onaj koji započneš."
+          subtitle="Vrata su otvorena svaki dan. Najbolji je trening - onaj koji započneš."
           center
         />
 
@@ -68,7 +68,7 @@ const Contact = () => {
                 <Clock className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Radno vrijeme</div>
-                  <div className="text-foreground">Svaki dan · 09:00 — 20:30</div>
+                  <div className="text-foreground">Svaki dan · 09:00 - 20:30</div>
                 </div>
               </div>
               <div className="flex items-center gap-3 pt-2">
