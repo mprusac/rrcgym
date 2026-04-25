@@ -39,12 +39,12 @@ const About = () => (
       >
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=900&q=80"
-            alt="Unutrašnjost MMA dvorane"
-            className="h-full w-full object-cover grayscale transition-all duration-700 hover:grayscale-0"
+            src={teamGroup}
+            alt="RRC Gym tim u dvorani"
+            className="h-full w-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-background/70 via-transparent to-transparent" />
         </div>
         <div className="absolute -bottom-6 -right-6 hidden h-32 w-32 border-l-4 border-t-4 border-primary md:block" aria-hidden />
       </motion.div>
