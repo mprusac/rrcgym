@@ -41,7 +41,7 @@ const ProCamp = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <SectionHeading eyebrow="Pro kamp" title="Destinacija za profesionalce" />
+        <SectionHeading eyebrow="Pro kamp" title="Destinacija za profesionalce" center />
       </motion.div>
 
       {/* Galerija boraca odmah ispod naslova */}

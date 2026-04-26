@@ -1,8 +1,9 @@
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface Props {
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
   subtitle?: string;
   center?: boolean;
   className?: string;

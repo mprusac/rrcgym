@@ -11,7 +11,7 @@ const About = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <SectionHeading eyebrow="O nama" title="Mjesto gdje sport živi, a strast raste" center />
+        <SectionHeading eyebrow="O nama" title={<>Mjesto gdje sport živi,<br />a strast raste</>} center />
         <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
           <p>
             RRC Gym je otvoren u lipnju 2025. kao prvi borilački centar u Bosni i Hercegovini
@@ -21,8 +21,8 @@ const About = () => (
           <p>
             Naša misija je jednostavna - graditi novu generaciju boraca i rekreativaca u srcu
             Bosne, uz uvjete koji se ne razlikuju od onih u najboljim kampovima Europe i svijeta.
-            Vrata su otvorena svima - od djece od 8 godina do profesionalaca koji se pripremaju
-            za UFC, ONE Championship i KSW.
+            Vrata su otvorena svima - od djece do profesionalaca koji se pripremaju za UFC,
+            ONE Championship i KSW.
           </p>
         </div>
 
