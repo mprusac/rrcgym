@@ -111,10 +111,10 @@ const ProCamp = () => (
             ))}
           </div>
 
-          <Button asChild variant="fight" size="xl" className="mt-10">
+          <Button asChild variant="fight" size="lg" className="mt-10 w-full max-w-full whitespace-normal text-center text-sm leading-tight sm:w-auto sm:text-base md:size-xl">
             <Link to="/rezervacija-kamp">
-              Kontaktiraj za kamp rezervaciju
-              <ArrowRight className="ml-1 h-5 w-5" />
+              <span className="text-balance">Kontaktiraj za kamp rezervaciju</span>
+              <ArrowRight className="ml-1 h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
             </Link>
           </Button>
         </div>
