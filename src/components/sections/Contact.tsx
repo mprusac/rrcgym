@@ -44,6 +44,7 @@ const Contact = () => {
               title="Lokacija RRC Gym Vitez"
               src="https://www.google.com/maps?q=44.168061,17.772802&z=15&output=embed"
               className="h-full w-full"
+              style={{ filter: "invert(90%) hue-rotate(180deg) brightness(0.95) contrast(0.9)" }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
