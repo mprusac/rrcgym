@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import coach1 from "@/assets/coach-1.png";
-import coach2 from "@/assets/coach-2.png";
-import soldic from "@/assets/soldic.png";
+import coach1 from "@/assets/coach-1.jpg";
+import coach2 from "@/assets/coach-2.jpg";
+import soldic from "@/assets/soldic.jpg";
 
 const coaches = [
   {
