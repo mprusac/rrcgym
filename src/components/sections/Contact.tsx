@@ -28,7 +28,7 @@ const Contact = () => {
         <SectionHeading
           eyebrow="Lokacija i kontakt"
           title="Dođi i osjeti dvoranu"
-          subtitle="Vrata su otvorena svaki dan. Najbolji je trening - onaj koji započneš."
+          subtitle="Vrata su otvorena svaki dan, najbolji trening je onaj koji započneš"
           center
         />
 
@@ -103,7 +103,7 @@ const Contact = () => {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className="mt-2 border-border bg-surface focus-visible:ring-primary"
-                  placeholder="ti@example.com"
+                  placeholder="vas@gmail.com"
                 />
               </div>
               <div>

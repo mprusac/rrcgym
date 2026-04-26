@@ -187,7 +187,7 @@ const Prijava = () => {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-10 max-w-3xl"
+          className="mb-10 max-w-3xl mx-auto text-center"
         >
           <div className="mb-4 inline-flex items-center gap-2 border border-primary/40 bg-primary/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary sm:text-xs">
             <span className="inline-block h-1.5 w-1.5 animate-pulse-red rounded-full bg-primary" />
@@ -196,7 +196,7 @@ const Prijava = () => {
           <h1 className="font-display text-4xl leading-tight md:text-6xl">
             Odaberi <span className="text-primary">sport</span> i prijavi se
           </h1>
-          <p className="mt-3 max-w-xl text-base text-muted-foreground md:text-lg">
+          <p className="mt-3 mx-auto max-w-xl text-base text-muted-foreground md:text-lg">
             Klikni disciplinu i pogledaj kad se odvijaju treninzi. Ispod ispuni svoje podatke i
             šaljemo potvrdu na email.
           </p>
@@ -286,7 +286,7 @@ const Prijava = () => {
 
             {/* Step 2 — Schedule (info only) */}
             <section aria-labelledby="step-2" className="mt-12">
-              <div className="mb-4 flex items-baseline gap-3">
+              <div className="mb-4 flex items-baseline justify-center gap-3 text-center">
                 <span className="font-display text-sm text-primary">02</span>
                 <h2 id="step-2" className="font-display text-2xl md:text-3xl">
                   Raspored treninga -{" "}
@@ -357,7 +357,7 @@ const Prijava = () => {
 
             {/* Step 3 — Form */}
             <section id="forma" aria-labelledby="step-3" className="mt-12">
-              <div className="mb-4 flex items-baseline gap-3">
+              <div className="mb-4 flex items-baseline justify-center gap-3 text-center">
                 <span className="font-display text-sm text-primary">03</span>
                 <h2 id="step-3" className="font-display text-2xl md:text-3xl">
                   Tvoji podaci
