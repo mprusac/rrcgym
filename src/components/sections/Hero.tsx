@@ -23,6 +23,8 @@ const Hero = () => {
           alt="RRC Gym tim - svi članovi kluba zajedno u dvorani"
           className="h-full w-full object-cover object-center"
           loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 bg-gradient-radial-red" />
@@ -47,6 +49,9 @@ const Hero = () => {
         <motion.img
           src={logo}
           alt="RRC Gym"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
