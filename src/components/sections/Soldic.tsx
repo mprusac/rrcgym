@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import soldicImg from "@/assets/soldic.png";
+import soldicImg from "@/assets/soldic.jpg";
 
 const stats = [
   { value: "21", label: "Pobjeda" },
