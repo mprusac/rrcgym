@@ -66,7 +66,7 @@ const ProCamp = () => (
               <img
                 src={g.image}
                 alt={`${g.name} u RRC Gym dvorani`}
-                className="h-full w-full object-cover object-top grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                className="h-full w-full object-cover object-top transition-all duration-500 group-hover:scale-105"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />

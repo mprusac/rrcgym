@@ -64,7 +64,7 @@ const Facility = () => (
             <img
               src={src}
               alt={`Galerija RRC Gym ${i + 1}`}
-              className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+              className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-background/40 opacity-0 transition-opacity group-hover:opacity-0" />

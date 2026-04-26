@@ -17,7 +17,7 @@ const About = () => (
           <img
             src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=900&q=80"
             alt="Unutrašnjost MMA dvorane"
-            className="h-full w-full object-cover grayscale transition-all duration-700 hover:grayscale-0"
+            className="h-full w-full object-cover transition-all duration-700"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-transparent" />
