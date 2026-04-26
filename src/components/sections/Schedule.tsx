@@ -5,9 +5,11 @@ import SectionHeading from "@/components/SectionHeading";
 
 const days = ["Pon", "Uto", "Sri", "Čet", "Pet"];
 const slots = [
-  { time: "17:00", items: ["Boks", "-", "Kickboxing", "-", "Boks"] },
-  { time: "18:30", items: ["MMA", "BJJ", "MMA", "BJJ", "MMA"] },
-  { time: "20:00", items: ["Kickboxing", "Open mat", "Boks", "Open mat", "Kondicija"] },
+  { time: "09:00 - 10:00", items: ["Kickboxing", "MMA", "Boks", "MMA", "Boks"] },
+  { time: "10:00 - 11:30", items: ["MMA · PRO", "Grappling · PRO", "Kickboxing · PRO", "Hrvanje · PRO", "MMA · PRO"] },
+  { time: "17:00 - 18:00", items: ["Kickboxing", "Boks", "Kickboxing", "Boks", "Kickboxing"] },
+  { time: "18:00 - 19:30", items: ["MMA", "No-Gi / Wrestling", "MMA", "No-Gi / Wrestling", "MMA"] },
+  { time: "19:30 - 20:30", items: ["BJJ", "-", "BJJ", "-", "BJJ"] },
 ];
 
 const Schedule = () => (
