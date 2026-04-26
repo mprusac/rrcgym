@@ -50,9 +50,9 @@ const Index = () => {
       <Soldic />
       <Marquee />
       <Coaches />
-      <About />
       <Disciplines />
       <Facility />
+      <About />
       <ProCamp />
       <Schedule />
       <Membership />
