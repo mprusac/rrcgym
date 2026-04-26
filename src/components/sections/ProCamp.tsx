@@ -3,12 +3,12 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
-import obanElliott from "@/assets/guest-oban-elliott.jpg";
-import ahmedVila from "@/assets/guest-ahmed-vila.jpg";
-import juricBatur from "@/assets/guest-juric-batur.jpg";
-import ivanErslan from "@/assets/guest-ivan-erslan.jpg";
-import croataBarrio from "@/assets/guest-croata-barrio.jpg";
-import selverMahmic from "@/assets/guest-selver-mahmic.jpg";
+import obanElliott from "@/assets/guest-oban-elliott.webp";
+import ahmedVila from "@/assets/guest-ahmed-vila.webp";
+import juricBatur from "@/assets/guest-juric-batur.webp";
+import ivanErslan from "@/assets/guest-ivan-erslan.webp";
+import croataBarrio from "@/assets/guest-croata-barrio.webp";
+import selverMahmic from "@/assets/guest-selver-mahmic.webp";
 
 const featuredGuests = [
   { name: "Oban Elliott", image: obanElliott },

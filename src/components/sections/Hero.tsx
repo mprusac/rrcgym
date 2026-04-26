@@ -3,8 +3,8 @@ import { ArrowRight, ChevronDown, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useRef, useState } from "react";
-import heroImage from "@/assets/hero-team.jpg";
-import logo from "@/assets/rrc-logo.png";
+import heroImage from "@/assets/hero-team.webp";
+import logo from "@/assets/rrc-logo.webp";
 import VideoModal from "@/components/VideoModal";
 
 const Hero = () => {

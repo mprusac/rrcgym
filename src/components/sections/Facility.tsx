@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 import { Box, Layers, Target, BedDouble, ShowerHead, Coffee } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/gallery-5.jpg";
-import g6 from "@/assets/gallery-6.jpg";
-import g7 from "@/assets/gallery-7.jpg";
-import g8 from "@/assets/gallery-8.jpg";
-import g9 from "@/assets/gallery-9.jpg";
-import g10 from "@/assets/gallery-10.jpg";
+import g1 from "@/assets/gallery-1.webp";
+import g2 from "@/assets/gallery-2.webp";
+import g3 from "@/assets/gallery-3.webp";
+import g4 from "@/assets/gallery-4.webp";
+import g5 from "@/assets/gallery-5.webp";
+import g6 from "@/assets/gallery-6.webp";
+import g7 from "@/assets/gallery-7.webp";
+import g8 from "@/assets/gallery-8.webp";
+import g9 from "@/assets/gallery-9.webp";
+import g10 from "@/assets/gallery-10.webp";
 
 const features = [
   { icon: Box, title: "MMA kavez 6×6 m", desc: "Profesionalni borilački kavez prema regulativi natjecanja." },
