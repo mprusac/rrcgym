@@ -11,6 +11,7 @@ import g7 from "@/assets/gallery-7.webp";
 import g8 from "@/assets/gallery-8.webp";
 import g9 from "@/assets/gallery-9.webp";
 import g10 from "@/assets/gallery-10.webp";
+// removed last gallery image (g6)
 
 const features = [
   { icon: Box, title: "MMA kavez 6×6 m", desc: "Profesionalni borilački kavez prema regulativi natjecanja." },
@@ -21,7 +22,7 @@ const features = [
   { icon: Coffee, title: "Kafić i parking", desc: "U sklopu SRC Romari kompleksa." },
 ];
 
-const gallery = [g9, g1, g3, g10, g4, g5, g2, g7, g8, g6];
+const gallery = [g9, g1, g3, g10, g4, g5, g2, g7, g8];
 
 const Facility = () => (
   <section id="dvorana" className="relative bg-surface py-24 md:py-32">

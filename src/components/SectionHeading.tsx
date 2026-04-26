@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 interface Props {
   eyebrow?: string;
-  title: string;
+  title: React.ReactNode;
   subtitle?: string;
   center?: boolean;
   className?: string;
