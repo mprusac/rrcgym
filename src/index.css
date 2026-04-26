@@ -85,11 +85,17 @@
     /* Firefox scrollbar */
     scrollbar-color: hsl(var(--primary)) hsl(0 0% 0%);
     scrollbar-width: thin;
+    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
     font-feature-settings: 'ss01', 'cv11';
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+  #root {
+    overflow-x: clip;
   }
   h1, h2, h3, .font-display {
     font-family: 'Bebas Neue', 'Inter', sans-serif;
