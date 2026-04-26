@@ -23,6 +23,8 @@ const Hero = () => {
           alt="RRC Gym tim - svi članovi kluba zajedno u dvorani"
           className="h-full w-full object-cover object-center"
           loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 bg-gradient-radial-red" />
