@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/rrc-logo.png";
+import logo from "@/assets/rrc-logo.webp";
 
 const links = [
   { href: "#o-nama", label: "O nama" },

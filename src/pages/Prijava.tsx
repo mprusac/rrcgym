@@ -10,10 +10,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
-import sportMma from "@/assets/sport-mma.png";
-import sportKickbox from "@/assets/sport-kickbox.png";
-import sportBoks from "@/assets/sport-boks.png";
-import sportJiuJitsu from "@/assets/sport-jiu-jitsu.png";
+import sportMma from "@/assets/sport-mma.webp";
+import sportKickbox from "@/assets/sport-kickbox.webp";
+import sportBoks from "@/assets/sport-boks.webp";
+import sportJiuJitsu from "@/assets/sport-jiu-jitsu.webp";
 
 const DAYS = [
   { idx: 1, short: "Pon", long: "Ponedjeljak" },
