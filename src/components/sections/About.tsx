@@ -1,38 +1,17 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import aboutHero from "@/assets/about-hero.jpg";
 
 const About = () => (
   <section id="o-nama" className="relative bg-background py-24 md:py-32">
-
-    <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <div className="container-x mx-auto max-w-3xl">
       <motion.div
-        initial={{ opacity: 0, x: -24 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="relative"
       >
-        <div className="relative aspect-[4/5] w-full overflow-hidden">
-          <img
-            src={aboutHero}
-            alt="Borac u teretani RRC Gym"
-            className="h-full w-full object-cover transition-all duration-700"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-transparent" />
-        </div>
-        <div className="absolute -bottom-6 -right-6 hidden h-32 w-32 border-l-4 border-t-4 border-primary md:block" aria-hidden />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 24 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        <SectionHeading eyebrow="O nama" title="Mjesto gdje sport živi, a strast raste" />
+        <SectionHeading eyebrow="O nama" title="Mjesto gdje sport živi, a strast raste" center />
         <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
           <p>
             RRC Gym je otvoren u lipnju 2025. kao prvi borilački centar u Bosni i Hercegovini
