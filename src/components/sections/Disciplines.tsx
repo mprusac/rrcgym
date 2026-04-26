@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Swords, Hand, Zap, Shield } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import mmaImage from "@/assets/discipline-mma.jpg";
-import bjjImage from "@/assets/discipline-bjj.jpg";
-import kickboxImage from "@/assets/discipline-kickbox.jpg";
-import boksImage from "@/assets/discipline-boks.jpg";
+import mmaImage from "@/assets/discipline-mma.webp";
+import bjjImage from "@/assets/discipline-bjj.webp";
+import kickboxImage from "@/assets/discipline-kickbox.webp";
+import boksImage from "@/assets/discipline-boks.webp";
 
 const items = [
   {
