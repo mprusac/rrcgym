@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
+import aboutHero from "@/assets/about-hero.jpg";
 
 const About = () => (
   <section id="o-nama" className="relative bg-background py-24 md:py-32">
@@ -15,8 +16,8 @@ const About = () => (
       >
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=900&q=80"
-            alt="Unutrašnjost MMA dvorane"
+            src={aboutHero}
+            alt="Borac u teretani RRC Gym"
             className="h-full w-full object-cover transition-all duration-700"
             loading="lazy"
           />
