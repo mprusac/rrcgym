@@ -1,6 +1,15 @@
 import { motion } from "framer-motion";
 import { Box, Layers, Target, BedDouble, ShowerHead, Coffee } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
+import g1 from "@/assets/gallery-1.jpg";
+import g2 from "@/assets/gallery-2.jpg";
+import g3 from "@/assets/gallery-3.jpg";
+import g4 from "@/assets/gallery-4.jpg";
+import g5 from "@/assets/gallery-5.jpg";
+import g6 from "@/assets/gallery-6.jpg";
+import g7 from "@/assets/gallery-7.jpg";
+import g8 from "@/assets/gallery-8.jpg";
+import g9 from "@/assets/gallery-9.jpg";
 
 const features = [
   { icon: Box, title: "MMA kavez 6×6 m", desc: "Profesionalni borilački kavez prema regulativi natjecanja." },
@@ -11,14 +20,7 @@ const features = [
   { icon: Coffee, title: "Kafić i parking", desc: "U sklopu SRC Romari kompleksa." },
 ];
 
-const gallery = [
-  "https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=800&q=80",
-  "https://images.unsplash.com/photo-1517438476312-10d79c077509?w=800&q=80",
-  "https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?w=800&q=80",
-  "https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?w=800&q=80",
-  "https://images.unsplash.com/photo-1530021232320-687d8e3dba54?w=800&q=80",
-  "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&q=80",
-];
+const gallery = [g9, g1, g3, g4, g5, g2, g7, g8, g6];
 
 const Facility = () => (
   <section id="dvorana" className="relative bg-surface py-24 md:py-32">
