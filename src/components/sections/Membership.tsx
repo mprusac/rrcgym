@@ -109,13 +109,14 @@ const Membership = () => {
             </ul>
 
             <Button asChild variant={p.featured ? "fight" : "outlineFight"} className="mt-8">
-              <Link to={`/prijava?plan=${p.id}`}>Prijavi se</Link>
+              <Link to={`/prijava?plan=${p.id}${carrySuffix}`}>Prijavi se</Link>
             </Button>
           </motion.div>
         ))}
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Membership;
