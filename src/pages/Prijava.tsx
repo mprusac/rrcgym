@@ -14,6 +14,8 @@ import sportMma from "@/assets/sport-mma.webp";
 import sportKickbox from "@/assets/sport-kickbox.webp";
 import sportBoks from "@/assets/sport-boks.webp";
 import sportJiuJitsu from "@/assets/sport-jiu-jitsu.webp";
+import { Check } from "lucide-react";
+import { PLANS } from "@/components/sections/Membership";
 
 const DAYS = [
   { idx: 1, short: "Pon", long: "Ponedjeljak" },
