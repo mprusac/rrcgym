@@ -103,7 +103,7 @@ const Membership = () => (
             </ul>
 
             <Button asChild variant={p.featured ? "fight" : "outlineFight"} className="mt-8">
-              <Link to="/prijava">Prijavi se</Link>
+              <Link to={`/prijava?plan=${p.id}`}>Prijavi se</Link>
             </Button>
           </motion.div>
         ))}
