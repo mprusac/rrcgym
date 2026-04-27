@@ -7,36 +7,42 @@ import { cn } from "@/lib/utils";
 
 export const PLANS = [
   {
+    id: "godisnja",
     name: "Godišnja članarina",
     price: "100 KM",
     period: "/ mjesečno",
     perks: ["Ugovor na 12 mjeseci", "Sve discipline", "Najpovoljnija opcija"],
   },
   {
+    id: "polugodisnja",
     name: "Polugodišnja članarina",
     price: "120 KM",
     period: "/ mjesečno",
     perks: ["Ugovor na 6 mjeseci", "Sve discipline", "100 KM za djecu 8–14 god."],
   },
   {
+    id: "mladi-godisnja",
     name: "Mladi - godišnja",
     price: "80 KM",
     period: "/ mjesečno",
     perks: ["Mladi do 18 godina", "Ugovor na 12 mjeseci", "Sve discipline"],
   },
   {
+    id: "mladi-polugodisnja",
     name: "Mladi - polugodišnja",
     price: "100 KM",
     period: "/ mjesečno",
     perks: ["Mladi do 18 godina", "Ugovor na 6 mjeseci", "Sve discipline"],
   },
   {
+    id: "tromjesecna",
     name: "Tromjesečna članarina",
     price: "150 KM",
     period: "/ mjesečno",
     perks: ["Ugovor na 3 mjeseca", "Sve discipline", "Kraći angažman"],
   },
   {
+    id: "bez-obveze",
     name: "Bez obveze",
     price: "200 KM",
     period: "/ mjesečno",
@@ -44,6 +50,7 @@ export const PLANS = [
     perks: ["Bez obvezivanja na duži period", "Sve discipline", "Maksimalna fleksibilnost"],
   },
   {
+    id: "boxing-zene",
     name: "Boxing za žene",
     price: "60 KM",
     period: "/ mjesečno",
@@ -96,7 +103,7 @@ const Membership = () => (
             </ul>
 
             <Button asChild variant={p.featured ? "fight" : "outlineFight"} className="mt-8">
-              <Link to="/prijava">Prijavi se</Link>
+              <Link to={`/prijava?plan=${p.id}`}>Prijavi se</Link>
             </Button>
           </motion.div>
         ))}

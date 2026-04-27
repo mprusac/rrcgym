@@ -71,6 +71,12 @@ const Prijava = () => {
   const [discipline, setDiscipline] = useState<DisciplineV>(
     (params.get("d") as DisciplineV) || "mma",
   );
+  // If user came from a Membership card, plan is pre-selected via URL and we hide the pricing grid.
+  const initialPlanFromUrl = params.get("plan");
+  const planLockedFromUrl = !!initialPlanFromUrl && PLANS.some((p) => p.id === initialPlanFromUrl);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(
+    planLockedFromUrl ? initialPlanFromUrl : null,
+  );
   const [done, setDone] = useState(false);
 
   const [form, setForm] = useState({
@@ -144,6 +150,7 @@ const Prijava = () => {
       experience: parsed.data.experience || null,
       notes: [
         `Sport: ${DISCIPLINE_LABEL[discipline]}`,
+        selectedPlan ? `Članarina: ${PLANS.find((p) => p.id === selectedPlan)?.name}` : null,
         parsed.data.notes ? `Napomena: ${parsed.data.notes}` : null,
       ]
         .filter(Boolean)
@@ -357,54 +364,65 @@ const Prijava = () => {
               )}
             </section>
 
-            {/* Step 3 — Cjenovnik */}
-            <section aria-labelledby="cjenovnik" className="mt-12">
-              <div className="mb-6 flex items-baseline justify-center gap-3 text-center">
-                <span className="font-display text-sm text-primary">03</span>
-                <h2 id="cjenovnik" className="font-display text-2xl md:text-3xl">
-                  Odaberi članarinu
-                </h2>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {PLANS.map((p) => (
-                  <div
-                    key={p.name}
-                    className={cn(
-                      "relative flex flex-col rounded-xl border bg-card/40 p-5 transition-colors hover:border-primary/60",
-                      p.featured ? "border-primary shadow-red" : "border-border",
-                    )}
-                  >
-                    {p.featured && (
-                      <div className="absolute -top-3 left-5 bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
-                        Najfleksibilnije
-                      </div>
-                    )}
-                    <h3 className="font-display text-lg text-foreground">{p.name}</h3>
-                    <div className="my-3 flex items-baseline gap-1.5">
-                      <span className="font-display text-3xl text-foreground">{p.price}</span>
-                      <span className="text-xs text-muted-foreground">{p.period}</span>
-                    </div>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground">
-                      {p.perks.map((perk) => (
-                        <li key={perk} className="flex items-start gap-2">
-                          <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
-                          <span>{perk}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-center text-xs text-muted-foreground">
-                Svi članovi RRC Gyma ostvaruju 50% popusta na članarinu u FTC Romari.
-              </p>
-            </section>
+            {/* Step 3 — Cjenovnik (skriven ako je korisnik došao s odabranog plana) */}
+            {!planLockedFromUrl && (
+              <section aria-labelledby="cjenovnik" className="mt-12">
+                <div className="mb-6 flex items-baseline justify-center gap-3 text-center">
+                  <span className="font-display text-sm text-primary">03</span>
+                  <h2 id="cjenovnik" className="font-display text-2xl md:text-3xl">
+                    Odaberi članarinu
+                  </h2>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {PLANS.map((p) => {
+                    const isSelected = selectedPlan === p.id;
+                    return (
+                      <button
+                        type="button"
+                        key={p.id}
+                        onClick={() => setSelectedPlan(p.id)}
+                        className={cn(
+                          "group relative flex flex-col rounded-xl border bg-card/40 p-5 text-left transition-all",
+                          isSelected
+                            ? "border-primary bg-primary/10 shadow-red"
+                            : "border-border hover:border-primary/60",
+                        )}
+                      >
+                        {isSelected && (
+                          <div className="absolute -top-3 left-5 bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
+                            Odabrano
+                          </div>
+                        )}
+                        <h3 className="font-display text-lg text-foreground">{p.name}</h3>
+                        <div className="my-3 flex items-baseline gap-1.5">
+                          <span className="font-display text-3xl text-foreground">{p.price}</span>
+                          <span className="text-xs text-muted-foreground">{p.period}</span>
+                        </div>
+                        <ul className="space-y-1.5 text-sm text-muted-foreground">
+                          {p.perks.map((perk) => (
+                            <li key={perk} className="flex items-start gap-2">
+                              <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+                              <span>{perk}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </button>
+                    );
+                  })}
+                </div>
+                <p className="mt-4 text-center text-xs text-muted-foreground">
+                  Svi članovi RRC Gyma ostvaruju 50% popusta na članarinu u FTC Romari.
+                </p>
+              </section>
+            )}
 
-            {/* Step 4 — Form */}
-            <section id="forma" aria-labelledby="step-4" className="mt-12">
+            {/* Form step (03 ako je plan zaključan, inače 04) */}
+            <section id="forma" aria-labelledby="step-form" className="mt-12">
               <div className="mb-4 flex items-baseline justify-center gap-3 text-center">
-                <span className="font-display text-sm text-primary">04</span>
-                <h2 id="step-4" className="font-display text-2xl md:text-3xl">
+                <span className="font-display text-sm text-primary">
+                  {planLockedFromUrl ? "03" : "04"}
+                </span>
+                <h2 id="step-form" className="font-display text-2xl md:text-3xl">
                   Tvoji podaci
                 </h2>
               </div>
@@ -415,6 +433,14 @@ const Prijava = () => {
                   <span className="font-semibold text-primary">
                     {DISCIPLINE_LABEL[discipline]}
                   </span>
+                  {selectedPlan && (
+                    <>
+                      {" · "}
+                      <span className="font-semibold text-primary">
+                        {PLANS.find((p) => p.id === selectedPlan)?.name}
+                      </span>
+                    </>
+                  )}
                 </div>
 
                 <form onSubmit={onSubmit} className="grid gap-4">
