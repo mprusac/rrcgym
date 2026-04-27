@@ -34,6 +34,7 @@ const Index = () => {
     }
   }, [params]);
 
+  useEffect(() => {
     // JSON-LD for local SEO
     const ld = {
       "@context": "https://schema.org",
