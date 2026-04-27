@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { ArrowLeft, CheckCircle2, Loader2, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
