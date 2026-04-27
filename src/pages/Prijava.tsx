@@ -445,12 +445,21 @@ const Prijava = () => {
                     )}
                   </div>
                   {planLockedFromUrl && (
-                    <Link
-                      to="/#clanarine"
+                    <button
+                      type="button"
+                      onClick={() => {
+                        navigate("/");
+                        // wait for landing to mount, then scroll to clanarine
+                        setTimeout(() => {
+                          document
+                            .getElementById("clanarine")
+                            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }, 100);
+                      }}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-primary underline-offset-4 transition-colors hover:underline"
                     >
                       <ArrowLeft className="h-3.5 w-3.5" /> Promijeni članarinu
-                    </Link>
+                    </button>
                   )}
                 </div>
 
