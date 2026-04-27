@@ -150,6 +150,7 @@ const Prijava = () => {
       experience: parsed.data.experience || null,
       notes: [
         `Sport: ${DISCIPLINE_LABEL[discipline]}`,
+        selectedPlan ? `Članarina: ${PLANS.find((p) => p.id === selectedPlan)?.name}` : null,
         parsed.data.notes ? `Napomena: ${parsed.data.notes}` : null,
       ]
         .filter(Boolean)
