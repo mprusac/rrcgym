@@ -14,6 +14,8 @@ import sportMma from "@/assets/sport-mma.webp";
 import sportKickbox from "@/assets/sport-kickbox.webp";
 import sportBoks from "@/assets/sport-boks.webp";
 import sportJiuJitsu from "@/assets/sport-jiu-jitsu.webp";
+import { Check } from "lucide-react";
+import { PLANS } from "@/components/sections/Membership";
 
 const DAYS = [
   { idx: 1, short: "Pon", long: "Ponedjeljak" },
@@ -355,11 +357,54 @@ const Prijava = () => {
               )}
             </section>
 
-            {/* Step 3 — Form */}
-            <section id="forma" aria-labelledby="step-3" className="mt-12">
-              <div className="mb-4 flex items-baseline justify-center gap-3 text-center">
+            {/* Step 3 — Cjenovnik */}
+            <section aria-labelledby="cjenovnik" className="mt-12">
+              <div className="mb-6 flex items-baseline justify-center gap-3 text-center">
                 <span className="font-display text-sm text-primary">03</span>
-                <h2 id="step-3" className="font-display text-2xl md:text-3xl">
+                <h2 id="cjenovnik" className="font-display text-2xl md:text-3xl">
+                  Odaberi članarinu
+                </h2>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {PLANS.map((p) => (
+                  <div
+                    key={p.name}
+                    className={cn(
+                      "relative flex flex-col rounded-xl border bg-card/40 p-5 transition-colors hover:border-primary/60",
+                      p.featured ? "border-primary shadow-red" : "border-border",
+                    )}
+                  >
+                    {p.featured && (
+                      <div className="absolute -top-3 left-5 bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
+                        Najfleksibilnije
+                      </div>
+                    )}
+                    <h3 className="font-display text-lg text-foreground">{p.name}</h3>
+                    <div className="my-3 flex items-baseline gap-1.5">
+                      <span className="font-display text-3xl text-foreground">{p.price}</span>
+                      <span className="text-xs text-muted-foreground">{p.period}</span>
+                    </div>
+                    <ul className="space-y-1.5 text-sm text-muted-foreground">
+                      {p.perks.map((perk) => (
+                        <li key={perk} className="flex items-start gap-2">
+                          <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+                          <span>{perk}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-center text-xs text-muted-foreground">
+                Svi članovi RRC Gyma ostvaruju 50% popusta na članarinu u FTC Romari.
+              </p>
+            </section>
+
+            {/* Step 4 — Form */}
+            <section id="forma" aria-labelledby="step-4" className="mt-12">
+              <div className="mb-4 flex items-baseline justify-center gap-3 text-center">
+                <span className="font-display text-sm text-primary">04</span>
+                <h2 id="step-4" className="font-display text-2xl md:text-3xl">
                   Tvoji podaci
                 </h2>
               </div>
