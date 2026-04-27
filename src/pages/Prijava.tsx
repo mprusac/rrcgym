@@ -415,11 +415,13 @@ const Prijava = () => {
               </section>
             )}
 
-            {/* Step 4 — Form */}
-            <section id="forma" aria-labelledby="step-4" className="mt-12">
+            {/* Form step (03 ako je plan zaključan, inače 04) */}
+            <section id="forma" aria-labelledby="step-form" className="mt-12">
               <div className="mb-4 flex items-baseline justify-center gap-3 text-center">
-                <span className="font-display text-sm text-primary">04</span>
-                <h2 id="step-4" className="font-display text-2xl md:text-3xl">
+                <span className="font-display text-sm text-primary">
+                  {planLockedFromUrl ? "03" : "04"}
+                </span>
+                <h2 id="step-form" className="font-display text-2xl md:text-3xl">
                   Tvoji podaci
                 </h2>
               </div>
@@ -430,6 +432,14 @@ const Prijava = () => {
                   <span className="font-semibold text-primary">
                     {DISCIPLINE_LABEL[discipline]}
                   </span>
+                  {selectedPlan && (
+                    <>
+                      {" · "}
+                      <span className="font-semibold text-primary">
+                        {PLANS.find((p) => p.id === selectedPlan)?.name}
+                      </span>
+                    </>
+                  )}
                 </div>
 
                 <form onSubmit={onSubmit} className="grid gap-4">
