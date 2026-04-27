@@ -428,18 +428,28 @@ const Prijava = () => {
               </div>
 
               <div className="rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-md md:p-8">
-                <div className="mb-6 rounded-lg border border-primary/30 bg-primary/10 p-3 text-sm">
-                  Prijavljuješ se za:{" "}
-                  <span className="font-semibold text-primary">
-                    {DISCIPLINE_LABEL[discipline]}
-                  </span>
-                  {selectedPlan && (
-                    <>
-                      {" · "}
-                      <span className="font-semibold text-primary">
-                        {PLANS.find((p) => p.id === selectedPlan)?.name}
-                      </span>
-                    </>
+                <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-primary/30 bg-primary/10 p-3 text-sm">
+                  <div>
+                    Prijavljuješ se za:{" "}
+                    <span className="font-semibold text-primary">
+                      {DISCIPLINE_LABEL[discipline]}
+                    </span>
+                    {selectedPlan && (
+                      <>
+                        {" · "}
+                        <span className="font-semibold text-primary">
+                          {PLANS.find((p) => p.id === selectedPlan)?.name}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                  {planLockedFromUrl && (
+                    <Link
+                      to="/#clanarine"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-primary underline-offset-4 transition-colors hover:underline"
+                    >
+                      <ArrowLeft className="h-3.5 w-3.5" /> Promijeni članarinu
+                    </Link>
                   )}
                 </div>
 
