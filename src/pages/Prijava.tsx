@@ -448,13 +448,15 @@ const Prijava = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        navigate("/");
-                        // wait for landing to mount, then scroll to clanarine
+                        // Carry chosen sport back so user keeps it after changing plan
+                        navigate(`/?changeplan=1&d=${encodeURIComponent(discipline)}`);
+                        // wait for landing to mount, then scroll exactly to the membership cards
                         setTimeout(() => {
-                          document
-                            .getElementById("clanarine")
-                            ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                        }, 100);
+                          const el =
+                            document.getElementById("clanarine-kartice") ||
+                            document.getElementById("clanarine");
+                          el?.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }, 120);
                       }}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-primary underline-offset-4 transition-colors hover:underline"
                     >
