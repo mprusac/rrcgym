@@ -64,6 +64,7 @@ const signupSchema = z.object({
 });
 
 const Prijava = () => {
+  const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const [sessions, setSessions] = useState<Session[]>([]);
   const [loading, setLoading] = useState(true);
