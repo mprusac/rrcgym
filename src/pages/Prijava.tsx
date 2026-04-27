@@ -71,6 +71,12 @@ const Prijava = () => {
   const [discipline, setDiscipline] = useState<DisciplineV>(
     (params.get("d") as DisciplineV) || "mma",
   );
+  // If user came from a Membership card, plan is pre-selected via URL and we hide the pricing grid.
+  const initialPlanFromUrl = params.get("plan");
+  const planLockedFromUrl = !!initialPlanFromUrl && PLANS.some((p) => p.id === initialPlanFromUrl);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(
+    planLockedFromUrl ? initialPlanFromUrl : null,
+  );
   const [done, setDone] = useState(false);
 
   const [form, setForm] = useState({
