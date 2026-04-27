@@ -58,7 +58,13 @@ export const PLANS = [
   },
 ];
 
-const Membership = () => (
+const Membership = () => {
+  const [params] = useSearchParams();
+  // Preserve discipline (?d=) when user came back from /prijava to change membership
+  const carryD = params.get("d");
+  const carrySuffix = carryD ? `&d=${encodeURIComponent(carryD)}` : "";
+
+  return (
   <section id="clanarine" className="relative bg-background py-24 md:py-32">
     <div className="container-x">
       <SectionHeading
@@ -68,7 +74,7 @@ const Membership = () => (
         center
       />
 
-      <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div id="clanarine-kartice" className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3 scroll-mt-24">
         {PLANS.map((p, i) => (
           <motion.div
             key={p.name}
