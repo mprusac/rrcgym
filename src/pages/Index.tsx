@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import Soldic from "@/components/sections/Soldic";
@@ -14,6 +15,25 @@ import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 
 const Index = () => {
+  const [params] = useSearchParams();
+
+  useEffect(() => {
+    if (params.get("changeplan") === "1") {
+      // Scroll directly to the membership cards after landing renders
+      const tryScroll = (attempt = 0) => {
+        const el =
+          document.getElementById("clanarine-kartice") ||
+          document.getElementById("clanarine");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else if (attempt < 10) {
+          setTimeout(() => tryScroll(attempt + 1), 100);
+        }
+      };
+      tryScroll();
+    }
+  }, [params]);
+
   useEffect(() => {
     // JSON-LD for local SEO
     const ld = {
