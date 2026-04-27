@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import Soldic from "@/components/sections/Soldic";
