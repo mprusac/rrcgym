@@ -11,6 +11,7 @@ import g7 from "@/assets/gallery-7.webp";
 import g8 from "@/assets/gallery-8.webp";
 import g9 from "@/assets/gallery-9.webp";
 import g10 from "@/assets/gallery-10.webp";
+import g11 from "@/assets/gallery-11.webp";
 // removed last gallery image (g6)
 
 const features = [
@@ -22,7 +23,7 @@ const features = [
   { icon: Coffee, title: "Kafić i parking", desc: "U sklopu SRC Romari kompleksa." },
 ];
 
-const gallery = [g9, g1, g3, g10, g4, g5, g2, g7, g8];
+const gallery = [g9, g1, g3, g10, g4, g5, g2, g7, g11];
 
 const Facility = () => (
   <section id="dvorana" className="relative bg-surface py-24 md:py-32">
@@ -30,7 +31,7 @@ const Facility = () => (
       <SectionHeading
         eyebrow="Dvorana i oprema"
         title="Oprema svjetske klase"
-        subtitle="Sve što treba za ozbiljan rad - od prvog treninga do profesionalnog kampa."
+        subtitle="Sve što treba za ozbiljan rad - od prvog treninga do profesionalnog kampa"
         center
       />
 

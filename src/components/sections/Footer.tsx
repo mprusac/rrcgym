@@ -25,7 +25,9 @@ const Footer = () => (
             <span className="ml-1 text-foreground">GYM</span>
           </a>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-            Borilački centar svjetske klase u srcu Bosne. MMA · BJJ · Kickboxing · Boks.
+            Borilački centar svjetske klase u srcu Bosne.
+            <br />
+            MMA · BJJ · Kickboxing · Boks.
           </p>
           <div className="mt-5 flex gap-3">
             <a href="https://instagram.com/rrcgym" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center border border-border text-muted-foreground transition-all hover:border-primary hover:text-primary">
@@ -42,7 +44,7 @@ const Footer = () => (
 
         <div>
           <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Brzi linkovi</h3>
-          <ul className="mt-4 grid grid-cols-2 gap-2">
+          <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 max-w-[220px]">
             {links.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="text-sm text-foreground transition-colors hover:text-primary">{l.label}</a>
