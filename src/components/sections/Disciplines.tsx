@@ -10,7 +10,7 @@ const items = [
   {
     icon: Swords,
     title: "MMA",
-    desc: "Mješovite borilačke vještine - udaračka tehnika, hrvanje i parter, integrirano u jedan sustav. Za sve razine.",
+    desc: "Mješovite borilačke vještine - udaračka tehnika, hrvanje i parter, integrirano za sve razine.",
     image: mmaImage,
     objectPosition: "center 20%",
   },
@@ -24,14 +24,14 @@ const items = [
   {
     icon: Zap,
     title: "Kickboxing",
-    desc: "Eksplozivni udarački sport koji razvija snagu, brzinu i kondiciju kroz strukturiran trening.",
+    desc: "Eksplozivni udarački sport koji razvija snagu, brzinu i vrhunsku kondiciju kroz strukturiran trening.",
     image: kickboxImage,
     objectPosition: "center 15%",
   },
   {
     icon: Hand,
     title: "Boks",
-    desc: "Klasična škola udaranja - tehnika ruku, rad nogu, ritam i taktika u ringu.",
+    desc: "Klasična škola udaranja - tehnika ruku, rad nogu, čvrsta obrana, ritam i taktika u ringu.",
     image: boksImage,
     objectPosition: "center 25%",
   },

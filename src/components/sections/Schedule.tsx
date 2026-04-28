@@ -18,7 +18,7 @@ const Schedule = () => (
       <SectionHeading
         eyebrow="Raspored"
         title="Tjedni plan treninga"
-        subtitle="Okvirni raspored po danima i disciplinama."
+        subtitle="Okvirni raspored po danima i disciplinama"
         center
       />
 
