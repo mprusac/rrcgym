@@ -36,9 +36,9 @@ const Coaches = () => (
           transition={{ duration: 0.6 }}
           className="lg:col-span-7"
         >
-          <h2 className="font-display text-5xl leading-[0.9] text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+          <h2 className="font-display text-4xl leading-[0.9] text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
             <span className="text-primary">Tim koji</span>
-            <br />
+            <br className="hidden sm:block" />{" "}
             drži dvoranu
           </h2>
         </motion.div>
