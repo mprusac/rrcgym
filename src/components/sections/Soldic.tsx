@@ -48,9 +48,9 @@ const Soldic = () => (
           01 - Lice kluba
         </div>
 
-        <h2 className="font-display text-6xl leading-[0.9] text-foreground sm:text-7xl md:text-8xl">
-          Robert <span className="text-gradient-red">"Robocop"</span>
-          <br />
+        <h2 className="font-display text-4xl leading-[0.9] text-foreground sm:text-7xl md:text-8xl">
+          Robert <span className="text-gradient-red">"Robocop"</span>{" "}
+          <br className="hidden sm:block" />
           Soldić
         </h2>
 
